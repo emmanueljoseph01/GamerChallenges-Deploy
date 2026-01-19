@@ -1,4 +1,4 @@
-import { sequelizeClient } from "../configs/sequelize.client.js";
+import sequelizeClient from "../configs/sequelize.client.js";
 import { DataTypes, Model } from "sequelize";
 
 export class Participation extends Model {}
@@ -15,4 +15,4 @@ Participation.init(
     timestamps: true,
     underscored: true,
   }
-);
+); 

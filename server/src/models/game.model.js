@@ -1,7 +1,9 @@
-import { sequelizeClient } from "../configs/sequelize.client";
-import { Model, DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
+import sequelizeClient from "../configs/sequelize.client.js";
+
 
 export class Game extends Model {}
+
 Game.init(
   {
     title: {
@@ -14,9 +16,9 @@ Game.init(
     },
   },
   {
-    sequelize: sequelizeClient,
-    tableName: "games",
-    timestamps: true,
-    underscored: true,
+    sequelize: sequelizeClient, // Utilise l'instance Sequelize configurée
+    tableName: "games",         // Nom de la table dans la base de données
+    timestamps: true,           // Ajoute les champs createdAt et updatedAt
+    underscored: true,          // Utilise des underscores pour les noms de colonnes
   }
 );
