@@ -29,7 +29,7 @@ User.init(
       },
     },
     profil_image: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
     },
   },
   {
