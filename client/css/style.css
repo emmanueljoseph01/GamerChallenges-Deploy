@@ -1,0 +1,100 @@
+/* Style global */
+body {
+    background-color: #2b0b5a; 
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Pousse le logo à gauche et les liens à droite */
+    align-items: center;            /* Centre verticalement les éléments */
+    padding: 20px 50px;
+    background-color: #2b0b5a;     
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;               /* Enlève les puces de la liste */
+    margin: 0;
+    padding: 0;
+    gap: 30px;                      /* Espace entre chaque bouton */
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+/*  effet au survol  */
+.nav-links li a:hover {
+    color: #50e3c2;              
+    border-bottom: 2px solid #50e3c2;
+}
+
+/* On s'assure que le conteneur prend toute la largeur */
+.hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Empile le titre et le slogan */
+    align-items: center;    /* Centre horizontalement dans le flexbox */
+    justify-content: center; /* Centre verticalement si vous donnez une hauteur */
+    text-align: center;     /* Centre les lignes de texte à l'intérieur des balises */
+    padding: 60px 0;        /* Espace en haut et en bas */
+    color: white;
+}
+
+/* Style du titre */
+.hero h1 {
+    margin: 0 auto 10px auto; 
+    width: 100%;
+    font-size: 2.5rem;
+}
+
+/* Style du slogan */
+.hero p {
+    margin: 0 auto;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Conteneur de l'image principale */
+.challenge-card {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* La grille  */
+.hero-image-container {
+    position: relative;
+    max-width: 900px;
+    height: 450px;
+    margin: 0 auto;
+    
+    /* image */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('image.jpg');
+    background-size: cover;
+    background-position: center;
+    
+    /* Bordure lumineuse */
+    border: 2px solid #50e3c2; 
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(80, 227, 194, 0.4);
+    
+    /* Alignement du texte en bas à gauche */
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+}
+
+/* Le texte "Meilleure défi du mois" */
+.hero-text {
+    font-size: 1.8rem;
+    color: white;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-weight: normal;
+}
