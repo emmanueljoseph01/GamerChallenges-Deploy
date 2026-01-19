@@ -4,9 +4,13 @@ import { DataTypes, Model } from "sequelize";
 export class Participation extends Model {}
 Participation.init(
   {
-    title: {
+    video_url: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
   },
   {
