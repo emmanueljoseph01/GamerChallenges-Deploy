@@ -1,7 +1,8 @@
-import { sequelizeClient } from "../configs/sequelize.client";
+import sequelizeClient from "../configs/sequelize.client.js";
 import { Model, DataTypes } from "sequelize";
 
 export class Challenge extends Model {}
+
 Challenge.init(
   {
     title: {
@@ -12,15 +13,14 @@ Challenge.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    rules: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
+    // Autres champs...
   },
   {
     sequelize: sequelizeClient,
-    tableName: "challenges",
+    modelName: 'Challenge',
+    tableName: 'challenges',
     timestamps: true,
     underscored: true,
   }
 );
+
