@@ -12,14 +12,3 @@ const sequelizeClient = new Sequelize({
 });
 
 export default sequelizeClient;
-
-// async function dbConnection() {
-//   try {
-//     await sequelize.authenticate();
-//     console.log("Sequelize succeed");
-//   } catch (error) {
-//     console.log("Sequelize failed", error);
-//   }
-// }
-
-// dbConnection();
