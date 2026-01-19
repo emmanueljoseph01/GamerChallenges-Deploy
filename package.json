@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/O-clock-Falun/apo-GamerChallenges/issues"
   },
-  "homepage": "https://github.com/O-clock-Falun/apo-GamerChallenges#readme"
+  "homepage": "https://github.com/O-clock-Falun/apo-GamerChallenges#readme",
+  "dependencies": {
+    "multer": "^2.0.2"
+  }
 }
