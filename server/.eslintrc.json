@@ -1,0 +1,17 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
+  "rules": {
+      // interdire les == et les "var"
+    "no-unused-vars": "warn",
+    "eqeqeq": "error",
+    // autorisé les console.log
+    "no-console": "off"
+  }
+}
