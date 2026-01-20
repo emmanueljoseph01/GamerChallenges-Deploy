@@ -9,6 +9,16 @@ import {
 
 const router = express.Router();
 
+<<<<<<< HEAD
+router.post('/', createUser);
+router.get('/', getAllUsers);
+router.get('/:id', getUserById);
+router.put('/:id', updateUser);
+router.delete('/:id', deleteUser);
+
+export default router;
+
+=======
 // Route pour créer un utilisateur
 router.post('/', createUser);
 
@@ -25,3 +35,4 @@ router.put('/:id', updateUser);
 router.delete('/:id', deleteUser);
 
 export default router;
+>>>>>>> 2308e70cb94f6f1ba6bb7a006e74ba54d51b8f22

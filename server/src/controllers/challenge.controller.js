@@ -1,11 +1,19 @@
 import { Challenge } from '../models/challenge.model.js';
+<<<<<<< HEAD
+import { handleSuccess, handleError } from './base.controller.js';
+=======
 import { handleError, handleSuccess } from './base.controller.js';
+>>>>>>> 2308e70cb94f6f1ba6bb7a006e74ba54d51b8f22
 
 // Création d'un défi
 export const createChallenge = async (req, res) => {
   try {
     const challenge = await Challenge.create(req.body);
+<<<<<<< HEAD
+    handleSuccess(res, challenge, 201); // 201 : Ressource créée
+=======
     handleSuccess(res, challenge, 201);
+>>>>>>> 2308e70cb94f6f1ba6bb7a006e74ba54d51b8f22
   } catch (error) {
     handleError(res, error);
   }
@@ -58,7 +66,11 @@ export const deleteChallenge = async (req, res) => {
     if (!deleted) {
       return res.status(404).json({ error: 'Défi non trouvé.' });
     }
+<<<<<<< HEAD
+    res.status(204).json(); // 204 : Pas de contenu à renvoyer
+=======
     res.status(204).json();
+>>>>>>> 2308e70cb94f6f1ba6bb7a006e74ba54d51b8f22
   } catch (error) {
     handleError(res, error);
   }
