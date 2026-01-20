@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Fonction utilitaire pour envoyer une réponse réussie.
  * @param {Object} res - L'objet réponse Express.
@@ -17,3 +18,6 @@ export const handleError = (res, error) => {
   console.error(error);
   res.status(500).json({ error: 'Une erreur est survenue.' });
 };
+=======
+
+>>>>>>> 2308e70cb94f6f1ba6bb7a006e74ba54d51b8f22

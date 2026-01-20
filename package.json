@@ -1,7 +1,7 @@
 {
   "name": "projet-dww",
   "version": "1.0.0",
-  "description": "",
+  "description": "npm run install:all",
   "main": "index.js",
   "scripts": {
     "install:all": "npm install --prefix server && npm install --prefix client",

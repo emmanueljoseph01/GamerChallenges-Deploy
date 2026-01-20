@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import userRoutes from './routes/user.route.js';
+<<<<<<< HEAD
 import gameRoutes from './routes/game.route.js';
 import participationRoutes from './routes/participation.route.js';
 import baseRoutes from './routes/base.route.js';
@@ -36,5 +37,32 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Une erreur est survenue sur le serveur.' });
 });
+=======
+import sequelizeClient from './configs/sequelize.client.js';
+import './models/index.model.js'; // Pour charger les associations
 
+const app = express();
+
+// Synchronisation de la base de données
+sequelizeClient.sync({ alter: true }).then(() => {
+  console.log('✅ Base de données synchronisée');
+}).catch(error => {
+  console.error('❌ Erreur de synchronisation DB:', error);
+});
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Route de base pour vérifier que le serveur fonctionne
+app.get('/', (req, res) => {
+  res.send('Bienvenue sur GamerChallenges !');
+});
+
+// Routes utilisateur
+app.use('/users', userRoutes);
+>>>>>>> 2308e70cb94f6f1ba6bb7a006e74ba54d51b8f22
+
+// Autres routes...
 export default app;
+
