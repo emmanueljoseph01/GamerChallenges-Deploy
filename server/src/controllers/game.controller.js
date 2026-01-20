@@ -18,4 +18,43 @@ export const getAllGames = async (req, res) => {
   }
 };
 
-// Ajoute les autres méthodes (getGameById, updateGame, deleteGame)
+export const getGameById = async (req, res) => {
+  try {
+    const game = await Game.findByPk(req.params.id);
+    if (!game) {
+      return res.status(404).json({ error: 'Jeu non trouvé' });
+    }
+    res.status(200).json(game);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+export const updateGame = async (req, res) => {
+  try {
+    const [updated] = await Game.update(req.body, {
+      where: { id: req.params.id }
+    });
+    if (!updated) {
+      return res.status(404).json({ error: 'Jeu non trouvé' });
+    }
+    const game = await Game.findByPk(req.params.id);
+    res.status(200).json(game);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+export const deleteGame = async (req, res) => {
+  try {
+    const deleted = await Game.destroy({
+      where: { id: req.params.id }
+    });
+    if (!deleted) {
+      return res.status(404).json({ error: 'Jeu non trouvé' });
+    }
+    res.status(204).send();
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
