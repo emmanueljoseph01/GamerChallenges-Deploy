@@ -1,100 +1,291 @@
-/* Style global */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        font-size: 16px;
+    }
+    .navbar {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .main-title, h1, h3 {
+        font-size: 1.5em;
+        text-align: center;
+    }
+    .container, .hero, .featured-challenge {
+        padding: 10px;
+    }
+    .table-header, .table-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .col {
+        width: 100%;
+        text-align: center;
+    }
+}
 body {
-    background-color: #2b0b5a; 
+    /* couleur de fond */
+    background: radial-gradient(circle, #1a0536 0%, #0d0221 100%);
+    /* Je colle le contenu aux bords de la fenêtre */
+    margin: 0px;
+    /* la page doit prend toute la hauteur de l'écran */
+    min-height: 100vh;
+    /* couleur blnche et police arial pour letexte */
     color: white;
     font-family: 'Arial', sans-serif;
 }
 
 .navbar {
+    /* display-flex pour aligner leséléments facilement */
     display: flex;
-    justify-content: space-between; /* Pousse le logo à gauche et les liens à droite */
-    align-items: center;            /* Centre verticalement les éléments */
+    /* logo tout à gauche et liens tout à droite */
+    justify-content: space-between; 
+    /* texte page alligné verticalement pour la proproté */
+    align-items: center;            
+    /* éspace à l'intérieur */
     padding: 20px 50px;
-    background-color: #2b0b5a;     
+    /* fond violet pour ma barre de navigation */
+    background-color: #8341e6;     
 }
 
 .nav-links {
+    /* liens les uns à côté des autres */
     display: flex;
-    list-style: none;               /* Enlève les puces de la liste */
+    /* j'enlève les petits points moches devant la liste */
+    list-style: none;               
     margin: 0;
     padding: 0;
-    gap: 30px;                      /* Espace entre chaque bouton */
+    /* espace entre chaque lien */
+    gap: 30px;                     
 }
 
 .nav-links li a {
     color: white;
+    /* j'enlève le trait de soulignement automatique des liens */
     text-decoration: none;
+    /* texte en gras pour qu'on le voie bien */
     font-weight: bold;
     font-size: 1.1rem;
+    /* transitionde couleur */
     transition: color 0.3s;
 }
 
-/*  effet au survol  */
 .nav-links li a:hover {
+    /* quand ma souris passe dessus, le lien devient bleu-vert */
     color: #50e3c2;              
+    /* Et je rajoute une petite ligne en bas pour le style */
     border-bottom: 2px solid #50e3c2;
 }
 
-/* On s'assure que le conteneur prend toute la largeur */
 .hero {
     width: 100%;
+    /* colonne pour empiler mon titre et mon texte */
     display: flex;
-    flex-direction: column; /* Empile le titre et le slogan */
-    align-items: center;    /* Centre horizontalement dans le flexbox */
-    justify-content: center; /* Centre verticalement si vous donnez une hauteur */
-    text-align: center;     /* Centre les lignes de texte à l'intérieur des balises */
-    padding: 60px 0;        /* Espace en haut et en bas */
-    color: white;
+    flex-direction: column; 
+    /* bloc au milieu de la page */
+    align-items: center;    
+    justify-content: center; 
+    text-align: center;     
+    /* Je mets de l'espace en haut et en bas du bloc */
+    padding: 60px 0;        
 }
 
-/* Style du titre */
 .hero h1 {
+    /* espace en bas du titre */
     margin: 0 auto 10px auto; 
     width: 100%;
+    /* taille du titre */
     font-size: 2.5rem;
 }
 
-/* Style du slogan */
 .hero p {
     margin: 0 auto;
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-/* Conteneur de l'image principale */
 .challenge-card {
+    /* Je centre tout ce qui se trouve dans cette zone */
     text-align: center;
     padding: 40px 20px;
 }
 
-/* La grille  */
 .hero-image-container {
     position: relative;
+    /* je limite la largeur max pour pas que l'image soit trop immense */
     max-width: 900px;
     height: 450px;
+    /* je centre le cadre  */
     margin: 0 auto;
     
-    /* image */
+    /* Je mets mon image de fond avec un voile noir transparent dessus */
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('image.jpg');
+    /* l'image de bien remplie tout le cadre sans se déformer */
     background-size: cover;
     background-position: center;
     
-    /* Bordure lumineuse */
+    /* cadre vert-torquoise avec des coins arrondis */
     border: 2px solid #50e3c2; 
     border-radius: 15px;
+    /* effet(halo) autour du cadre */
     box-shadow: 0 0 15px rgba(80, 227, 194, 0.4);
     
-    /* Alignement du texte en bas à gauche */
+    /* texte à l'intérieur tout en bas */
     display: flex;
     align-items: flex-end;
     padding: 30px;
 }
 
-/* Le texte "Meilleure défi du mois" */
 .hero-text {
     font-size: 1.8rem;
     color: white;
     margin: 0;
+    /* ombre derrière le texte  */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    font-weight: normal;
+}
+
+.action-section {
+  display: flex;
+  /* bouton à droite */
+  justify-content: flex-end; 
+  width: 100%;
+  padding: 20px;
+  /* taille de la boîte */
+  box-sizing: border-box;
+}
+
+.create-btn {
+  /* je transforme le bouton en bloc pour gérer les marges */
+  display: block; 
+  /* je mets une marge automatique à gauche pour le pousser à droite */
+  margin-left: auto; 
+  margin-right: 0;
+  /* j'ai faits mon bouton très large et haut  */
+  padding: 30px 70px; 
+  font-size: 1.2rem;
+}
+
+.create-btn:hover {
+    /*  survole sur le bouton et  changement de couleur */
+    background-color: #50e3c2;
+    box-shadow: 0 4px 15px rgba(80, 227, 194, 0.6);
+}
+
+.team-section h3 {
+  /* je baisse un peux le titre */
+  margin-top: 50px;      
+  /* espace avant les cercles en dessous */
+  margin-bottom: 30px;   
+  text-align: center;
+}
+
+.team-container {
+  /* cercles les uns à côté des autres */
+  display: flex;         
+  /* S'il n'y a plus de place, ils vont à la ligne tout seuls */
+  flex-wrap: wrap;       
+  /*espace entre chaque cercle */
+  gap: 20px;             
+  /* je les centre tous au milieu de la page */
+  justify-content: center;
+}
+
+.member {
+  /* carré parfait de 100px par 100px */
+  width: 100px;          
+  height: 100px;         
+  background-color: white; 
+  color: black;
+  
+  /* je transforme mon carré en rond  */
+  border-radius: 50%;    
+  
+  /* je centre le prénomau milieu du rond */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Je rajoute une bordure bleue pour que ce soit plus joli */
+  border: 4px solid #8341e6;
+  font-weight: bold;
+}
+
+
+/*..classement  */
+
+
+.container {
+    padding: 40px 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/*..titre classement.. */
+.main-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #50e3c2; /* Turquoise pour le titre */
+}
+
+/* Bande blanche d'en-tête  */
+.table-header {
+    display: flex;
+    background-color: rgb(243, 243, 243);
+    color: black;
+    padding: 15px 0;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+/*..ligne de données orizz et verticale.. */
+.table-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*..boites blanches  */
+.data-card {
+    background-color: white;
+    color: black;
+    width: 90%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: bold;
+    border: 2px solid #8341e6;
+    transition: 0.3s;
+}
+
+.data-card.small {
+    width: 60px;
+}
+
+.data-card:hover {
+    box-shadow: 0 0 15px #50e3c2;
+    border-color: #50e3c2;
+}
+
+/*..avatar..*/
+.table-row .member {
+    width: 70px;
+    height: 70px;
+    font-size: 0.8rem;
+    background-color: white;
+    color: black;
 }
