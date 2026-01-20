@@ -1,6 +1,8 @@
+@media (min-width: 600px)
+
 .page-title {
     font-family: "Orbitron", sans-serif;
-
+    color: #c5bebe;
 }
 
 .title {
