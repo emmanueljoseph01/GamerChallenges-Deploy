@@ -88,3 +88,5 @@ async function seedDB() {
     await sequelizeClient.close();
   }
 }
+
+seedDB();
