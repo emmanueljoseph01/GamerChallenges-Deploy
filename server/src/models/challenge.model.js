@@ -1,4 +1,4 @@
-import { sequelizeClient } from "../configs/sequelize.client";
+import { sequelizeClient } from "../configs/sequelize.client.js";
 import { Model, DataTypes } from "sequelize";
 
 export class Challenge extends Model {}
@@ -14,6 +14,14 @@ Challenge.init(
     },
     rules: {
       type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    game_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
