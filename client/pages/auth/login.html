@@ -2,33 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
-
-    <!-- On réutilise la feuille de style principale du site -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerChallenges</title>
+    <link rel="stylesheet" href="auth.css" type="text/css" />
 </head>
-
 <body>
+    
+    <div class="overlay-popup"> 
+        <div class="content-popup">
+             <h2>Connexion</h2>
+                    <form method="post">
 
-    <!-- 
-        Fenêtre MODALE de connexion
-        Elle est prévue pour s'ouvrir par-dessus la page actuelle
-        (ex : page d'accueil ou leaderboard)
-    -->
-    <dialog id="login-popup">
-
-        <!-- Titre de la fenêtre -->
-        <h2>Connexion</h2>
-
-        <!-- 
-            Formulaire de connexion
-            Le formulaire n'est pas encore relié au backend
-        -->
-        <form method="post">
-
-            <!-- Champ email -->
-            <label for="email">Adresse e-mail</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+            <!-- Champ pseudo -->
+            <label for="pseudo">Pseudo</label><br>
+            <input type="pseudo" id="pseudo" name="pseudo" required><br>
 
             <!-- Champ mot de passe -->
             <label for="password">Mot de passe</label><br>
@@ -40,18 +27,25 @@
         </form>
 
         <!-- Lien vers l'inscription -->
-        <p>
-            Pas encore de compte ?
-            <a href="register.html">Créer un compte</a>
-        </p>
+       <p class="auth-switch">
+    Pas encore de compte ?
+    <a href="register.html" class="auth-link">Créer un compte</a> 
+       </p>
 
-        <!-- 
-            Bouton de fermeture de la pop-up
-            Sans JS, ce bouton est visuel / pédagogique
-        -->
+        
         <button>Fermer</button>
 
-    </dialog>
+        </div>
+    </div>
 
+    <script> 
+
+    </script>
 </body>
 </html>
+
+<footer class="footer">
+        <p class="footer-name"><a href="../legal/legal-notice.html">Mentions légales</a></p>
+        <p class="footer-name"><a href="../legal/privacy-policy.html">Politique de confidentialité</a></p>
+        <p class="footer-name"><a href="../legal/terms-of-service.html">Conditions générales de ventes (CGU)</a></p>
+    </footer>
