@@ -16,5 +16,9 @@ Role.init(
     tableName: "roles",
     timestamps: false,
     underscored: true,
+  },
+  {
+    timestamps: true,
+    underscored: true,
   }
 );
