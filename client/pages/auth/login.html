@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+
+    <!-- On réutilise la feuille de style principale du site -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+    <!-- 
+        Fenêtre MODALE de connexion
+        Elle est prévue pour s'ouvrir par-dessus la page actuelle
+        (ex : page d'accueil ou leaderboard)
+    -->
+    <dialog id="login-popup">
+
+        <!-- Titre de la fenêtre -->
+        <h2>Connexion</h2>
+
+        <!-- 
+            Formulaire de connexion
+            Le formulaire n'est pas encore relié au backend
+        -->
+        <form method="post">
+
+            <!-- Champ email -->
+            <label for="email">Adresse e-mail</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <!-- Champ mot de passe -->
+            <label for="password">Mot de passe</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <!-- Bouton de validation -->
+            <button type="submit">Se connecter</button>
+
+        </form>
+
+        <!-- Lien vers l'inscription -->
+        <p>
+            Pas encore de compte ?
+            <a href="register.html">Créer un compte</a>
+        </p>
+
+        <!-- 
+            Bouton de fermeture de la pop-up
+            Sans JS, ce bouton est visuel / pédagogique
+        -->
+        <button>Fermer</button>
+
+    </dialog>
+
+</body>
+</html>

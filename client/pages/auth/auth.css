@@ -1,0 +1,293 @@
+/* styles pour les modales de connexion et inscription */
+
+/* fond sombre derrière la modale */
+.modal {
+    display: none; /* caché par défaut */
+    position: fixed;
+    z-index: 1000; /* au dessus de tout */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* fond noir transparent */
+    background-color: rgba(0, 0, 0, 0.7);
+    /* pour que ça apparaisse en douceur */
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* contenu de la modale */
+.modal-content {
+    position: relative;
+    /* centré au milieu de l'écran */
+    margin: 5% auto;
+    /* fond violet de la modale */
+    background: linear-gradient(135deg, #3b0855 0%, #1a0536 100%);
+    padding: 40px;
+    /* bordure dorée */
+    border: 2px solid #D4AF37;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    /* ombre autour de la boite */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    /* animation d'apparition */
+    animation: slideDown 0.4s;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* bouton de fermeture (la croix) */
+.close-btn {
+    position: absolute;
+    /* en haut à droite */
+    top: 15px;
+    right: 20px;
+    /* couleur beige */
+    color: #c5bebe;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    /* transition au survol */
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    /* devient rose au survol */
+    color: #EC4899;
+}
+
+/* titre de la modale */
+.modal-title {
+    text-align: center;
+    /* couleur beige doré */
+    color: #D4AF37;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    /* police gaming si dispo */
+    font-family: "Orbitron", sans-serif;
+}
+
+/* formulaire */
+.auth-form {
+    /* espace entre les champs */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* groupe de champs (label + input) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* labels des champs */
+.form-group label {
+    color: #c5bebe;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* inputs text et password */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    /* je fais des inputs larges */
+    width: 100%;
+    padding: 12px 15px;
+    /* fond légèrement transparent */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* bordure beige */
+    border: 2px solid #c5bebe;
+    border-radius: 8px;
+    /* texte blanc */
+    color: white;
+    font-size: 1rem;
+    /* transition au focus */
+    transition: all 0.3s;
+}
+
+/* quand on clique dans l'input */
+.form-group input:focus {
+    outline: none;
+    /* bordure devient violette */
+    border-color: #8341e6;
+    /* halo violet autour */
+    box-shadow: 0 0 10px rgba(131, 65, 230, 0.5);
+}
+
+/* texte d'aide sous les inputs */
+.help-text {
+    color: #c5bebe;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* section options (checkbox + lien) */
+.form-options {
+    display: flex;
+    /* espace entre checkbox et lien */
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    /* sur mobile on passe en colonne */
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* label de checkbox personnalisé */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #c5bebe;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    cursor: pointer;
+    /* taille du checkbox */
+    width: 18px;
+    height: 18px;
+}
+
+/* lien mot de passe oublié */
+.forgot-link {
+    color: #50e3c2;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-link:hover {
+    color: #D4AF37;
+    /* soulignement au survol */
+    text-decoration: underline;
+}
+
+/* bouton de soumission */
+.submit-btn {
+    /* je fais un gros bouton visible */
+    width: 100%;
+    padding: 15px;
+    /* fond vert */
+    background-color: #10B981;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    /* transition au survol */
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    /* plus foncé au survol */
+    background-color: #059669;
+    /* effet de levée */
+    transform: translateY(-2px);
+    /* ombre plus prononcée */
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+}
+
+.submit-btn:active {
+    /* quand on clique le bouton s'enfonce */
+    transform: translateY(0);
+}
+
+/* message d'erreur */
+.error-message {
+    /* fond rose */
+    background-color: rgba(236, 72, 153, 0.2);
+    border: 1px solid #EC4899;
+    color: #EC4899;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* message de succès */
+.success-message {
+    /* fond vert */
+    background-color: rgba(16, 185, 129, 0.2);
+    border: 1px solid #10B981;
+    color: #10B981;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* pied de formulaire (lien vers autre page) */
+.form-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: #c5bebe;
+}
+
+.form-footer p {
+    font-size: 0.95rem;
+}
+
+/* liens vers connexion ou inscription */
+.link-register,
+.link-login {
+    color: #8341e6;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.link-register:hover,
+.link-login:hover {
+    color: #EC4899;
+    text-decoration: underline;
+}
+
+/* liens dans les CGU */
+.form-options a {
+    color: #50e3c2;
+    text-decoration: underline;
+}
+
+.form-options a:hover {
+    color: #D4AF37;
+}
+
+/* responsive mobile */
+@media (max-width: 600px) {
+    .modal-content {
+        /* moins de padding sur mobile */
+        padding: 30px 20px;
+        /* modale prend presque tout l'écran */
+        width: 95%;
+        margin: 10% auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .form-options {
+        /* en colonne sur mobile */
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
