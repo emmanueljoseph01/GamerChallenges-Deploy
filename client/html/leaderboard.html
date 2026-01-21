@@ -3,54 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GamerChallenges - Classement</title>
-    <link rel="stylesheet" href="../css/style.css">
+
+<title>GamerChallenges - Classement</title>
+
+   <link rel="stylesheet" href="../css/leaderboard.css">
 </head>
+
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                GamerChallenges 
-                <img src="assets/image/logo.png" alt="Logo" class="logo-img">
+
+<header>
+  
+    <nav class="navbar">
+      
+        <div class="logo">
+          GamerChallenges
+            <img src="../assets/image/logo.png" alt="Logo" class="logo-img">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="#">Liste de challenge</a></li>
+            <li><a href="leaderboard.html" class="active">Classement</a></li>
+            <li><a href="#">Connexion / Inscription</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+
+    <h1 class="main-title">
+        <!-- Titre principal -->
+        Classement
+    </h1>
+
+    <!-- Ligne d’en-tête du tableau -->
+    <div class="table-header">
+        <div class="col">Utilisateur</div>
+        <div class="col">Challenge</div>
+        <div class="col">Nombre de votes</div>
+        <div class="col">Nombre de défis</div>
+    </div>
+
+    <!-- Ligne données utilisateur -->
+    <div class="table-row" data-user-id="1">
+        <!-- data-user-id servira au JavaScript -->
+
+        <div class="col">
+            <!-- Colonne utilisateur -->
+            <div class="member">
+                <!-- Avatar utilisateur -->
+                Avatar
             </div>
-            <ul class="nav-links">
-                <li><a href="html/index.html">Accueil</a></li>
-                <li><a href="#">Liste de challenge</a></li>
-                <li><a href="html/leaderboard.html" class="active">Classement</a></li>
-                <li><a href="#">Connexion/Inscription</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="container">
-        <h1 class="main-title">Classement</h1>
-
-        <div class="table-header">
-            <div class="col">Utilisateur</div>
-            <div class="col">Challenge</div>
-            <div class="col">Nombre des votes</div>
-            <div class="col">Nombre des défis</div>
         </div>
 
-        <div class="table-row">
-            <div class="col"><div class="member">Avatar</div></div>
-            <div class="col"><div class="data-card">Nom challenge</div></div>
-            <div class="col"><div class="data-card small">X</div></div>
-            <div class="col"><div class="data-card small">X</div></div>
+        <div class="col">
+            <!-- Colonne challenge -->
+            <div class="data-card" data-challenge-name>
+                Nom challenge
+            </div>
         </div>
 
-        <div class="table-row">
-            <div class="col"><div class="member"></div></div>
-            <div class="col"><div class="data-card"></div></div>
-            <div class="col"><div class="data-card small"></div></div>
-            <div class="col"><div class="data-card small"></div></div>
+        <div class="col">
+            <!-- Colonne votes -->
+            <div class="data-card small" data-votes>
+                0
+            </div>
         </div>
-    </main>
 
-    <footer>
-        <p>Mentions légales</p>
-    </footer>
+        <div class="col">
+            <!-- Colonne nombre de défis -->
+            <div class="data-card small" data-defis>
+                0
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+     <p>Mentions légales</p>
+</footer>
 
 </body>
 </html>

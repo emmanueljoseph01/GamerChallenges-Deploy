@@ -2,62 +2,130 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Responsive : adapte le site à la taille de l’écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>GamerChallenges - Accueil</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+    <link rel="stylesheet" href="../css/accueil.css">
+ <!-- JS dans le head avec defer pour s'assurer que le DOM est chargé -->
+    <script src="../js/main.js" defer></script>
+  </head>
+
 <body>
+<header>
+    <nav class="navbar">
+        <!-- Barre de navigation principale -->
 
-    <header>
-        <!--menu de navigation-->
-        <nav class="navbar">
-            <div class="logo">
-    GamerChallenges 
-    <img src="assets/image/logo.png" alt="Logo" class="logo-img">
-           </div>
-              <ul class="nav-links">
-                  <li><a href="#">Accueil</a></li>
-                  <li><a href="#">Liste de challenge</a></li>
-                  <li><a href="#">Classement</a></li>
-                  <li><a href="#">Connexion/Inscription</a></li>
-               </ul>
-        </nav>
-    </header>
+        <div class="logo">
+             GamerChallenges
 
-    <main>
-  <!-- section accueil -->
-        <section class="hero">
-            <h1>Relevez des défis sur vos jeux préférés</h1>
-            <p>Crée.Rèleve.Domine.</p>
-        </section>
- <!-- bloc defi du mois -->
-        <section class="featured-challenge">
-    <div class="challenge-card">
-        <div class="hero-image-container">
-            <h3 class="hero-text">Meilleure défi du mois</h3>
+            <!-- Logo du site -->
+            <img src="../assets/image/logo.png" alt="Logo" class="logo-img">
         </div>
-    </div>
-</section>
-<!-- bouton creation defi -->
-        <section class="action-section">
-            <button class="create-btn">Création d'un challenge</button>
-        </section>
-<!-- equipe gamerChallenges -->
-        <section class="team-section">
-            <h3>Équipe GamerChallenges</h3>
-            <div class="team-container">
-                <div class="member"><span>Bilel</span></div>
-                <div class="member"><span>Emmanuel</span></div>
-                <div class="member"><span>Lolitta</span></div>
-                <div class="member"><span>Lydia</span></div>
-                <div class="member"><span>Luisa</span></div>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>Mentions légales</p>
-     </footer>
+        <ul class="nav-links">
+            <!-- Liste des liens de navigation -->
+
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="#">Liste de challenge</a></li>
+            <li><a href="leaderboard.html">Classement</a></li>
+            <li><a href="#" id="loginBtn">Connexion / Inscription</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+<!-- Contenu principal de la page -->
+
+    <section class="hero">
+        <!-- Section d’introduction -->
+
+        <h1>Relevez des défis sur vos jeux préférés</h1>
+        <p>Crée. Relève. Domine.</p>
+    </section>
+
+    <section class="featured-challenge">
+        <!-- Section du défi  -->
+
+        <div class="challenge-card">
+            <!-- Carte du défi -->
+
+            <div class="hero-image-container">
+                <!-- Conteneur image + texte -->
+
+                <h3 class="hero-text">Meilleur défi du mois</h3>
+                <!-- Texte affiché sur l’image -->
+            </div>
+        </div>
+    </section>
+
+    <section class="action-section">
+        <!-- Section du bouton d’action -->
+
+        <button class="create-btn" id="createChallengeBtn">
+            <!-- Bouton pour créer un challenge -->
+            Création d’un challenge
+        </button>
+    </section>
+
+    <section class="team-section">
+        <!-- Section de présentation de l’équipe -->
+
+        <h3>Équipe GamerChallenges</h3>
+
+        <div class="team-container">
+            <!-- Conteneur des NOUS -->
+
+            <div class="member" data-user="bilel">Bilel</div>
+            <div class="member" data-user="emmanuel">Emmanuel</div>
+            <div class="member" data-user="lolitta">Lolitta</div>
+            <div class="member" data-user="lydia">Lydia</div>
+            <div class="member" data-user="luisa">Luisa</div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Pop up connexion/inscription -->
+<div class="modal" id="authModal">
+
+    <!-- Contenu du popup -->
+    <div class="modal-content">
+
+        <!-- Bouton fermeture -->
+        <span class="close-modal" id="closeModal">&times;</span>
+
+        <!-- Titre -->
+        <h2 id="modalTitle">Connexion</h2>
+
+        <!-- Formulaire de connexion -->
+        <form id="loginForm">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+
+        <!-- Formulaire d'inscription -->
+        <form id="registerForm" class="hidden">
+            <input type="text" placeholder="Pseudo" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Mot de passe" required>
+            <button type="submit">S’inscrire</button>
+        </form>
+
+        <!-- Switch-->
+        <p class="switch-text">
+            <span id="switchToRegister">Créer un compte</span>
+            <span id="switchToLogin" class="hidden">Déjà un compte ?</span>
+        </p>
+
+    </div>
+</div>
+
+<footer>
+    <p>Mentions légales</p>
+</footer>
 
 </body>
 </html>
