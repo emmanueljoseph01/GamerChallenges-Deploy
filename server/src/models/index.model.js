@@ -11,9 +11,6 @@ Role < > User
 User < > Vote < > Participation
 User < > Challenge
 Challenge < > Participation 
-
-
-Jeu < > Challenge
 */
 
 Role.hasMany(User, { foreignKey: "role_id", as: "users" });
