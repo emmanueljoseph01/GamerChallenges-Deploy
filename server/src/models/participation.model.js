@@ -1,25 +1,22 @@
-import sequelizeClient from "../configs/sequelize.client.js";
-<<<<<<< HEAD
+import { sequelizeClient } from "../configs/sequelize.client.js";
 import { DataTypes, Model } from "sequelize";
-=======
-import { Model, DataTypes } from "sequelize";
->>>>>>> 2308e70cb94f6f1ba6bb7a006e74ba54d51b8f22
 
 export class Participation extends Model {}
-
 Participation.init(
   {
-    title: {
+    video_url: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // Autres champs...
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
   },
   {
     sequelize: sequelizeClient,
-    modelName: 'Participation',
-    tableName: 'participations',
+    tableName: "participations",
     timestamps: true,
     underscored: true,
   }
-); 
+);
