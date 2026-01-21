@@ -67,7 +67,7 @@ async function seedDB() {
 
     console.log("Creation des Admins...");
     await User.create({
-      username: "System_Admin",
+      username: "Admin_Challenge",
       email: "root@esport.com",
       password: adminPassword,
       birthdate: "1990-01-01",
@@ -76,7 +76,7 @@ async function seedDB() {
     });
 
     const moderatorUser = await User.create({
-      username: "BanHammer",
+      username: "Mod_Challenge",
       email: "moderator@esport.com",
       password: adminPassword,
       birthdate: "1995-05-20",
