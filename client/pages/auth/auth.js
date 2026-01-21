@@ -1,4 +1,4 @@
-/* auth.js
+ /* auth.js
  * Gestion de l'authentification côté client
  * Projet étudiant GamerChallenges
  * 
@@ -7,7 +7,7 @@
  * - la soumission des formulaires login / register
  * - une simulation de connexion / inscription
  * - le stockage utilisateur (localStorage) */
-
+ 
 document.addEventListener("DOMContentLoaded", () => {
 
     /* RÉCUPÉRATION DES ÉLÉMENTS */
