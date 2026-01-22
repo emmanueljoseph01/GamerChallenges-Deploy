@@ -28,13 +28,25 @@ font-family: "Orbitron", sans-serif;
     min-width: 500px;
     max-width: 800px;
     padding: 40px;
-    background-color: rgb(97, 32, 122);
+    background-color: rgb(153, 50, 204);
     border-radius: 20px;
 
 }
 
-.button {
-
+.content-popup button {
+    border: 0px;
+    background-color: darkorchid;
+    color: darkorange;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
 
 }
 
