@@ -1,3 +1,95 @@
+/* === SLIDER CYBER TECHNO === */
+
+/* === SLIDER CYBER TECHNO intégré à la carte === */
+.hero-image-container {
+    position: relative;
+    max-width: 900px;
+    height: 320px;
+    margin: 0 auto;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("image.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #50e3c2;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(80, 227, 194, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px 10px 10px 10px;
+    overflow: hidden;
+}
+.hero-image-container .hero-text {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    z-index: 2;
+}
+.hero-image-container .slider {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    margin: 0 auto;
+}
+.hero-image-container .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(.77,0,.18,1);
+    filter: brightness(0.9) contrast(1.1) saturate(1.2) drop-shadow(0 0 8px #50e3c2);
+    z-index: 1;
+    border-radius: 10px;
+}
+.hero-image-container .slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+.hero-image-container .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(26,5,54,0.85);
+    color: #50e3c2;
+    border: 2px solid #50e3c2;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 0 8px #50e3c2;
+    transition: background 0.2s, color 0.2s;
+}
+.hero-image-container .slider-btn:hover {
+    background: #50e3c2;
+    color: #1a0536;
+}
+.hero-image-container .slider-btn.prev {
+    left: 10px;
+}
+.hero-image-container .slider-btn.next {
+    right: 10px;
+}
+@media (max-width: 600px) {
+    .hero-image-container {
+        max-width: 98vw;
+        height: 180px;
+        border-radius: 10px;
+        padding: 12px 2px 2px 2px;
+    }
+    .hero-image-container .slider {
+        height: 90px;
+    }
+    .hero-image-container .slider-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+}
 /* Style général */
 body {
     /* Fond dégradé violet */
@@ -201,13 +293,25 @@ body {
 footer {
     /* Centrage du texte */
     text-align: center;
-
     /* Espacement */
     padding: 20px;
 }
 
+footer {
+    background: transparent;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+footer a:hover,
+footer a:active {
+    color: #50e3c2;
+}
 
-/* POP UP */
+
 /* POP UP */
 .modal {
     /* Caché par défaut */
@@ -230,7 +334,7 @@ footer {
     transform: translateX(-50%) translateY(-20px);
     width: 90%;
     max-width: 400px;
-    background: #1a0536;
+    background: #0f0f0f;
     color: white;
     padding: 30px;
     border-radius: 15px;
@@ -307,8 +411,5 @@ footer {
         font-size: 1.8rem;
     }
 
-    /* Bouton pleine largeur */
-    .create-btn {
-        width: 100%;
-    }
+
 }

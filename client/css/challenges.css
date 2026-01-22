@@ -1,0 +1,138 @@
+body {
+    background: #1e2124;
+    margin: 0;
+    min-height: 100vh;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #8341e6;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.nav-links a.active,
+.nav-links a:hover {
+    color: #50e3c2;
+    border-bottom: 2px solid #50e3c2;
+}
+
+/* Page*/
+.page-container {
+    padding: 30px;
+}
+
+/* Espace recherche */
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+
+}
+
+.search-section input {
+    flex: 1;
+    padding: 12px;
+}
+
+.search-section button {
+    padding: 12px 20px;
+    font-weight: bold;
+}
+
+/* Contenu*/
+.content-section {
+    display: flex;
+    gap: 40px;
+}
+
+/* Colonne gauche */
+.left-column {
+    width: 200px;
+}
+
+.create-btn {
+    width: 100%;
+    padding: 15px;
+    font-weight: bold;
+}
+
+/* Liste challenges */
+.challenge-list {
+    flex: 1;
+}
+
+.challenge-list h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.challenge-card {
+    background: #e0e0e0;
+    color: black;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    min-height: 80px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+
+footer {
+    background: transparent;
+    text-align: center;
+    padding: 20px;
+}
+footer a.footer-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+footer a.footer-link:hover,
+footer a.footer-link:active {
+    color: #50e3c2;
+}
+    @media (max-width: 600px) {
+        .navbar {
+            flex-direction: column;
+            gap: 15px;
+        }
+        .nav-links {
+            flex-direction: column;
+            align-items: center;
+        }
+        .challenge-list h2 {
+            font-size: 1.3rem;
+        }
+        .challenge-card {
+            padding: 18px 8px;
+            font-size: 1rem;
+        }
+        .create-btn {
+            padding: 10px;
+            font-size: 1rem;
+        }
+        footer {
+            padding: 12px;
+            font-size: 0.95rem;
+        }
+    }
+    padding: 20px;
+}

@@ -1,6 +1,6 @@
 /* Style général */
 body {
-    background: radial-gradient(circle, #1a0536 0%, #0d0221 100%);
+    background: #1e2124;
     margin: 0;
     min-height: 100vh;
     color: white;
@@ -125,12 +125,25 @@ body {
     justify-content: center;
 }
 
-
-
 footer {
+    /* Centrage du texte */
     text-align: center;
+    /* Espacement */
     padding: 20px;
 }
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+footer a:hover,
+footer a:active {
+    color: #50e3c2;
+}
+
+
 
 
 

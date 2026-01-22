@@ -6,7 +6,9 @@
 
 <title>GamerChallenges - Classement</title>
 
-   <link rel="stylesheet" href="../css/leaderboard.css">
+    <link rel="stylesheet" href="../css/leaderboard.css">
+    <link rel="stylesheet" href="../css/accueil.css">
+    <script src="../js/main.js" defer></script>
 </head>
 
 <body>
@@ -23,9 +25,9 @@
 
         <ul class="nav-links">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="#">Liste de challenge</a></li>
+            <li><a href="challenges.html">Liste de challenge</a></li>
             <li><a href="leaderboard.html" class="active">Classement</a></li>
-            <li><a href="#">Connexion / Inscription</a></li>
+            <li><a href="#" id="loginBtn">Connexion / Inscription</a></li>
         </ul>
     </nav>
 </header>
@@ -82,7 +84,31 @@
 </main>
 
 <footer>
-     <p>Mentions légales</p>
+     <p><a href="../legal/legal-notice.html">Mentions légales</a></p>
+</footer>
+
+<!-- Pop up connexion/inscription -->
+<div class="modal" id="authModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <h2 id="modalTitle">Connexion</h2>
+        <form id="loginForm">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+        <form id="registerForm" class="hidden">
+            <input type="text" placeholder="Pseudo" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Mot de passe" required>
+            <button type="submit">S’inscrire</button>
+        </form>
+        <p class="switch-text">
+            <span id="switchToRegister">Créer un compte</span>
+            <span id="switchToLogin" class="hidden">Déjà un compte ?</span>
+        </p>
+    </div>
+</div>
 </footer>
 
 </body>
