@@ -1,0 +1,415 @@
+/* === SLIDER CYBER TECHNO === */
+
+/* === SLIDER CYBER TECHNO intégré à la carte === */
+.hero-image-container {
+    position: relative;
+    max-width: 900px;
+    height: 320px;
+    margin: 0 auto;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("image.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #50e3c2;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(80, 227, 194, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px 10px 10px 10px;
+    overflow: hidden;
+}
+.hero-image-container .hero-text {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    z-index: 2;
+}
+.hero-image-container .slider {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    margin: 0 auto;
+}
+.hero-image-container .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(.77,0,.18,1);
+    filter: brightness(0.9) contrast(1.1) saturate(1.2) drop-shadow(0 0 8px #50e3c2);
+    z-index: 1;
+    border-radius: 10px;
+}
+.hero-image-container .slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+.hero-image-container .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(26,5,54,0.85);
+    color: #50e3c2;
+    border: 2px solid #50e3c2;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 0 8px #50e3c2;
+    transition: background 0.2s, color 0.2s;
+}
+.hero-image-container .slider-btn:hover {
+    background: #50e3c2;
+    color: #1a0536;
+}
+.hero-image-container .slider-btn.prev {
+    left: 10px;
+}
+.hero-image-container .slider-btn.next {
+    right: 10px;
+}
+@media (max-width: 600px) {
+    .hero-image-container {
+        max-width: 98vw;
+        height: 180px;
+        border-radius: 10px;
+        padding: 12px 2px 2px 2px;
+    }
+    .hero-image-container .slider {
+        height: 90px;
+    }
+    .hero-image-container .slider-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+}
+/* Style général */
+body {
+    /* Fond dégradé violet */
+    background: #1e2124;
+    /* Suppression des marges par défaut */
+    margin: 0;
+
+    /* Hauteur minimum = hauteur de l’écran */
+    min-height: 100vh;
+
+    /* Couleur du texte */
+    color: white;
+
+    /* Police du site */
+    font-family: Arial, sans-serif;
+}
+
+
+.navbar {
+    /* Affiche en ligne */
+    display: flex;
+
+    /* Logo à gauche, liens à droite */
+    justify-content: space-between;
+
+    /* Alignement vertical */
+    align-items: center;
+
+    /* Espaces internes */
+    padding: 20px 50px;
+
+    /* Couleur de fond */
+    background-color: #8341e6;
+}
+
+.nav-links {
+    /* Liens côte à côte */
+    display: flex;
+
+    /* Suppression des puces */
+    list-style: none;
+
+    /* Espacement entre liens */
+    gap: 30px;
+
+    /* Suppression des marges */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    /* Couleur des liens */
+    color: white;
+
+    /* Suppression du soulignement */
+    text-decoration: none;
+
+    /* Texte en gras */
+    font-weight: bold;
+}
+
+/* Le survol */
+.nav-links a:hover,
+.nav-links .active {
+    color: #50e3c2;
+    border-bottom: 2px solid #50e3c2;
+}
+
+
+
+.hero {
+    /* Texte centré */
+    text-align: center;
+
+    /* Espacement vertical */
+    padding: 60px 0;
+}
+
+.hero h1 {
+    /* Taille du titre */
+    font-size: 2.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+
+.challenge-card {
+    padding: 40px 20px;
+}
+
+.hero-image-container {
+    /* Largeur max */
+    max-width: 900px;
+
+    /* Hauteur  */
+    height: 450px;
+
+    /* La centrer */
+    margin: auto;
+
+    /* Image + gradient */
+    background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)), url("image.jpg");
+
+    /* Image adaptée au cadre */
+    background-size: cover;
+    background-position: center;
+
+    /* Bordure */
+    border: 2px solid #50e3c2;
+    border-radius: 15px;
+
+    /* Texte en bas */
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+}
+
+.hero-text {
+    /* Taille du texte */
+    font-size: 1.8rem;
+}
+
+
+
+.action-section {
+    /* Flex pour aligner le bouton */
+    display: flex;
+
+    /* Bouton à droite */
+    justify-content: flex-end;
+
+    /* Espacement */
+    padding: 20px;
+}
+
+.create-btn {
+    /* Taille du bouton */
+    padding: 30px 70px;
+
+    /* Taille du texte */
+    font-size: 1.2rem;
+}
+
+/* Effet au survol */
+.create-btn:hover {
+    background-color: #50e3c2;
+}
+
+
+
+.team-section h3 {
+    /* Centrage du titre */
+    text-align: center;
+
+    /* Marges verticales */
+    margin: 50px 0 30px;
+}
+
+.team-container {
+    /* Membres côte à côte */
+    display: flex;
+
+    /* Espacement */
+    gap: 20px;
+
+    /* Centrage */
+    justify-content: center;
+
+    /* Retour à la ligne si besoin */
+    flex-wrap: wrap;
+}
+
+.member {
+    /* Taille du cercle, mais d'abord je prepare le carré */
+    width: 100px;
+    height: 100px;
+
+    /* Couleurs */
+    background: white;
+    color: black;
+
+    /* Cercle */
+    border-radius: 50%;
+
+    /* Centrage du texte */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Bordure */
+    border: 4px solid #8341e6;
+
+    /* Texte en gras */
+    font-weight: bold;
+}
+
+footer {
+    /* Centrage du texte */
+    text-align: center;
+    /* Espacement */
+    padding: 20px;
+}
+
+footer {
+    background: transparent;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+footer a:hover,
+footer a:active {
+    color: #50e3c2;
+}
+
+
+/* POP UP */
+.modal {
+    /* Caché par défaut */
+    display: none;
+    /* Position fixe sur tout l’écran */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Priorité max */
+    z-index: 1000;
+}
+
+/* Boîte du popup */
+.modal-content {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    width: 90%;
+    max-width: 400px;
+    background: #0f0f0f;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #50e3c2;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+.modal.show {
+    display: block;
+}
+.modal.show .modal-content {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Bouton fermer */
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Champs */
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Bouton */
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* Texte switch */
+.switch-text {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.switch-text span {
+    color: #50e3c2;
+    cursor: pointer;
+}
+
+/* Classe utilitaire */
+.hidden {
+    display: none;
+}
+
+
+
+@media (max-width: 600px) {
+
+    /* Navbar en colonne */
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Liens en colonne */
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Titre plus petit */
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+
+}

@@ -1,4 +1,4 @@
-import { sequelizeClient } from "../configs/sequelize.client";
+import { sequelizeClient } from "../configs/sequelize.client.js";
 import { Model, DataTypes } from "sequelize";
 
 export class Game extends Model {}
@@ -12,11 +12,16 @@ Game.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    pegi: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 3,
+    },
   },
   {
     sequelize: sequelizeClient,
     tableName: "games",
-    timestamps: true,
+    timestamps: false,
     underscored: true,
   }
 );
