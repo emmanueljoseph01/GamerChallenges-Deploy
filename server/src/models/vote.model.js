@@ -25,7 +25,7 @@ Vote.init(
   {
     sequelize: sequelizeClient,
     tableName: "votes",
-    timestamps: true,
+    timestamps: false,
     underscored: true,
     indexes: [
       {
