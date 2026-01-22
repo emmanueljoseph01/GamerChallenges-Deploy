@@ -1,5 +1,3 @@
-@media (min-width: 600px) {
-
 .profil-header {
     display: flex;
     justify-content: space-between;
@@ -90,5 +88,4 @@
     gap: 10px;
     margin-right: 50px;
     margin-top: 20px;
-}
 }
