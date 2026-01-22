@@ -12,6 +12,11 @@ Game.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    pegi: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 3,
+    },
   },
   {
     sequelize: sequelizeClient,

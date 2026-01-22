@@ -6,12 +6,7 @@ import { Role } from "./role.model.js";
 import { Vote } from "./vote.model.js";
 import { Participation } from "./participation.model.js";
 
-/*
-Role < > User
-User < > Vote < > Participation
-User < > Challenge
-Challenge < > Participation 
-*/
+//
 
 Role.hasMany(User, { foreignKey: "role_id", as: "users" });
 // Rendre un "Role" obligatoire pour chaque "User" pour éviter "Null"
