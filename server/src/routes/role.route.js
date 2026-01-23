@@ -1,8 +1,16 @@
-import { Router } from 'express';
-import { baseRoute } from './base.route.js';
-import { Role } from '../models/index.model.js';
+import express from "express";
+import { RoleController } from "../controllers/role.controller.js";
 
-const router = Router();
-router.use('/', baseRoute(Role));
+
+
+const router = express.Router();
+
+router.get("/", RoleController.getAllRoles);
+router.get("/:id", RoleController.getRoleById);
+router.post("/", RoleController.createRole);
+router.put("/:id", RoleController.updateRole);
+router.delete("/:id", RoleController.deleteRole);
 
 export default router;
+
+

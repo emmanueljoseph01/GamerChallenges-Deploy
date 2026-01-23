@@ -1,8 +1,12 @@
-import { Router } from 'express';
-import { baseRoute } from './base.route.js';
-import { Game } from '../models/index.model.js';
+import express from "express";
+import { gameController } from "../controllers/game.controller.js";
 
-const router = Router();
-router.use('/', baseRoute(Game));
+const router = express.Router();
 
-export default router;
+router.get("/", gameController.getAllGames);    
+router.get("/:id", gameController.getGameById);
+router.post("/", gameController.createGame);
+router.put("/:id", gameController.updateGame);
+router.delete("/:id", gameController.deleteGame);
+
+export default router;  

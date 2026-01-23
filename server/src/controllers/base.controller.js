@@ -10,9 +10,10 @@ export const baseController = (Model) => ({
 
   findAll: async (req, res) => {
     try {
-      res.status(StatusCodes.OK).res.json(await Model.findAll());
+    const challenges = await Model.findAll();
+res.status(StatusCodes.OK).json(challenges);
     } catch (error) {
-      next(error);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message }); 
     }
   },
 
@@ -21,7 +22,7 @@ export const baseController = (Model) => ({
       const data = await Model.findByPk(req.params.id);
       data ? res.json(data) : res.status(404).end();
     } catch (error) {
-      next(error);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
     }
   },
 
@@ -30,7 +31,7 @@ export const baseController = (Model) => ({
       const [updated] = await Model.update(req.body, { where: { id: req.params.id } });
       updated ? res.json(await Model.findByPk(req.params.id)) : res.status(404).end();
     } catch (error) {
-      next(error);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
     }
   },
 
@@ -39,7 +40,7 @@ export const baseController = (Model) => ({
       await Model.destroy({ where: { id: req.params.id } });
       res.status(204).end();
     } catch (error) {
-      next(error);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
     }
   },
 });

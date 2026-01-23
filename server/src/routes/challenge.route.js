@@ -1,11 +1,17 @@
-import { Router } from 'express';
-import { baseRoute } from './base.route.js';
-import { Challenge } from '../models/index.model.js';
+import express from "express";
+import { challengeController }from "../controllers/challenge.controller.js";
 
 
 
-const router = Router();
-router.use('/', baseRoute(Challenge));
+const router = express.Router();
+
+router.get("/", challengeController.findAll);
+router.get("/:id", challengeController.findOne);
+router.post("/", challengeController.create);
+router.put("/:id", challengeController.update);
+router.delete("/:id", challengeController.delete);
+
+
 
 
 

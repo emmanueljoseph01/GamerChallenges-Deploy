@@ -1,8 +1,10 @@
 import express from "express";
+import challengeRoutes from "./challenge.route.js"; 
 
 
-export const baseRoute = (Model) => {
-  const router = express.Router();
+const router = express.Router();
+router.use("/challenges", challengeRoutes);
 
-  return router;
-};
+
+export default router;
+
