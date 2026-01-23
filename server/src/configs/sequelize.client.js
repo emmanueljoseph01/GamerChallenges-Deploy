@@ -20,4 +20,4 @@ const sequelizeClient = new Sequelize({
 //     console.error('Impossible de se connecter à la base de données:', err);
 //   });
 
-export default sequelizeClient;
+export { sequelizeClient };

@@ -1,4 +1,4 @@
-import { sequelizeClient } from "../configs/sequelize.client";
+import { sequelizeClient } from "../configs/sequelize.client.js";
 import { Model, DataTypes } from "sequelize";
 
 export class Game extends Model {}

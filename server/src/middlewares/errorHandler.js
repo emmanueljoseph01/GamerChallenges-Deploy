@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-export function errorHandler(err, _req, res, ) {
+export function errorHandler(err, _req, res, next) {  
   res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error: true,
       message: err.message,

@@ -3,6 +3,6 @@ import { baseRoute } from './base.route.js';
 import { Participation } from '../models/index.model.js';
 
 const router = Router();
-router.use('/participations', baseRoute(Participation));
+router.use('/', baseRoute(Participation));
 
 export default router;

@@ -15,7 +15,7 @@ Participation.init(
   },
   {
     sequelize: sequelizeClient,
-    tableName: "participations",
+    tableName: "participation",
     timestamps: true,
     underscored: true,
   }

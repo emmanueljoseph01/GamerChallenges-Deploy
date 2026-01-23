@@ -3,6 +3,6 @@ import { baseRoute } from './base.route.js';
 import { Game } from '../models/index.model.js';
 
 const router = Router();
-router.use('/games', baseRoute(Game));
+router.use('/', baseRoute(Game));
 
 export default router;
