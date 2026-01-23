@@ -1,0 +1,23 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"); */
+
+:root {
+  /* Couleurs principales et accents */
+  --primary-color: #ee217c; /* Rose néon */
+  --secondary-color: #30c0b7; /* Turquoise */
+  --tertiary-color: #d58600; /* Orange */
+
+  /* Couleurs de structure */
+  --bg-color: #1a1a1b; /* Noir profond */
+  --surface-color: #3b0855; /* Violet foncé */
+  --text-color: #c5bebe; /* Gris clair */
+  /* --font-gaming: "Orbitron", sans-serif; */
+}
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.04em;
+} */
