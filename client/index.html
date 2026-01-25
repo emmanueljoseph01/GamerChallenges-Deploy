@@ -21,15 +21,13 @@
   <body>
     <header class="header-bar">
       <div class="site-header">
-        <img src="" alt="logo GamerChallenge" class="logo" />
+      <img src="./assets/images/logo.png" alt="logo GamerChallenge" class="logo" />
         <h1 class="site-title">GamerChallenge</h1>
       </div>
       <nav class="menu">
         <ul>
           <li><a href="./index.html">Accueil</a></li>
-          <li>
-            <a href="./challenges.html">Liste des challenges</a>
-          </li>
+          <li><a href="./challenge/challenges.html">Liste des challenges</a></li>
           <li><a href="./leaderboard.html">Classement</a></li>
           <li><a href="#" id="loginBtn">Connexion / Inscription</a></li>
         </ul>
@@ -57,17 +55,17 @@
             <h3 class="hero-text">Choisi ton challenge</h3>
             <div class="slider">
               <img
-                src="./assets/image/slide1.jpg"
+                src="./assets/images/image1.png"
                 class="slide active"
                 alt="Image 1"
               />
               <img
-                src="./assets/image/slide2.jpg"
+                src="./assets/images/image2.png"
                 class="slide"
                 alt="Image 2"
               />
               <img
-                src="./assets/image/slide3.jpg"
+                src="./assets/images/"
                 class="slide"
                 alt="Image 3"
               />
@@ -101,46 +99,6 @@
       </section>
     </main>
 
-    <!-- Pop up connexion/inscription -->
-    <div class="modal" id="authModal">
-      <!-- Contenu du popup -->
-      <div class="modal-content">
-        <!-- Bouton fermeture -->
-        <span class="close-modal" id="closeModal">&times;</span>
-
-        <!-- Titre -->
-        <h2 id="modalTitle">Connexion</h2>
-
-        <!-- Formulaire de connexion -->
-        <form id="loginForm">
-          <input type="nom" placeholder="Nom" required />
-          <input type="prénom" placeholder="Prénom" required />
-          <input
-            type="date de naissance"
-            placeholder="Date de naissance"
-            required
-          />
-          <input type="pseudo" placeholder="Pseudo" required />
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Mot de passe" required />
-          <button type="submit">Se connecter</button>
-        </form>
-
-        <!-- Formulaire d'inscription -->
-        <form id="registerForm" class="hidden">
-          <input type="text" placeholder="Pseudo" required />
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Mot de passe" required />
-          <button type="submit">S’inscrire</button>
-        </form>
-
-        <!-- Switch-->
-        <p class="switch-text">
-          <span id="switchToRegister">Créer un compte</span>
-          <span id="switchToLogin" class="hidden">Déjà un compte ?</span>
-        </p>
-      </div>
-    </div>
 
     <footer>
       <p><a href="./legal/legal-notice.html">Mentions légales</a></p>
@@ -153,5 +111,7 @@
         >
       </p>
     </footer>
+        <!-- Conteneur pour le modal -->
+<div id="modalContainer"></div>
   </body>
 </html>

@@ -1,63 +1,60 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --------- Sélection des éléments ---------
-    const authModal = document.getElementById("authModal");
-    const createBtn = document.getElementById("createChallengeBtn");
-    const loginBtn = document.getElementById("loginBtn"); // Assurez-vous que votre lien a cet ID
-    const closeModal = document.getElementById("closeModal");
-   
+  // Charger le modal depuis un fichier externe
+  const modalContainer = document.getElementById("modalContainer");
+  fetch('/client/auth-modal.html')
+    .then(response => response.text())
+    .then(html => {
+      modalContainer.innerHTML = html;
 
-    const switchToRegister = document.getElementById("switchToRegister");
-    const switchToLogin = document.getElementById("switchToLogin");
-    const loginForm = document.getElementById("loginForm");
-    const registerForm = document.getElementById("registerForm");
-    const modalTitle = document.getElementById("modalTitle");
+      // Sélection des éléments du modal
+      const authModal = document.getElementById("authModal");
+      const loginBtn = document.getElementById("loginBtn");
+      const createBtn = document.getElementById("createChallengeBtn");
+      const closeModal = document.getElementById("closeModal");
+      const switchToRegister = document.getElementById("switchToRegister");
+      const switchToLogin = document.getElementById("switchToLogin");
+      const loginForm = document.getElementById("loginForm");
+      const registerForm = document.getElementById("registerForm");
+      const modalTitle = document.getElementById("modalTitle");
 
-    // --------- Fonctions ---------
-
-    // Ouvrir le modal
-    function openModal() {
+      // Fonctions d'ouverture/fermeture/switch
+      function openModal() {
         authModal.classList.add("show");
         modalTitle.textContent = "Connexion";
         loginForm.classList.remove("hidden");
         registerForm.classList.add("hidden");
         switchToRegister.classList.remove("hidden");
         switchToLogin.classList.add("hidden");
-    }
-
-    // Fermer le modal
-    function closeModalFunc() {
+      }
+      function closeModalFunc() {
         authModal.classList.remove("show");
-    }
-
-    // Switch vers inscription
-    function showRegister() {
+      }
+      function showRegister() {
         loginForm.classList.add("hidden");
         registerForm.classList.remove("hidden");
         modalTitle.textContent = "Créer un compte";
         switchToRegister.classList.add("hidden");
         switchToLogin.classList.remove("hidden");
-    }
-
-    // Switch vers connexion
-    function showLogin() {
+      }
+      function showLogin() {
         registerForm.classList.add("hidden");
         loginForm.classList.remove("hidden");
         modalTitle.textContent = "Connexion";
         switchToRegister.classList.remove("hidden");
         switchToLogin.classList.add("hidden");
-    }
+      }
 
-    // Événements 
+      // Événements
+      if (loginBtn) loginBtn.addEventListener("click", openModal);
+      if (createBtn) createBtn.addEventListener("click", openModal);
+      if (closeModal) closeModal.addEventListener("click", closeModalFunc);
+      if (switchToRegister) switchToRegister.addEventListener("click", showRegister);
+      if (switchToLogin) switchToLogin.addEventListener("click", showLogin);
 
-    // Ouvrir le modal sur clic
-    if (createBtn) createBtn.addEventListener("click", openModal);
-    if (loginBtn) loginBtn.addEventListener("click", openModal);
-
-    // Fermer le modal
-    if (closeModal) closeModal.addEventListener("click", closeModalFunc);
-
-    // Switch Connexion / Inscription
-    if (switchToRegister) switchToRegister.addEventListener("click", showRegister);
-    if (switchToLogin) switchToLogin.addEventListener("click", showLogin);
+      // Fermer le modal si clic en dehors
+      window.addEventListener("click", (e) => {
+        if (e.target === authModal) closeModalFunc();
+      });
+    })
+    .catch(err => console.error("Erreur lors du chargement du modal :", err));
 });
-

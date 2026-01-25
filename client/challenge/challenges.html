@@ -1,134 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-     <link rel="stylesheet" href="/client/css/challenge.css">
-    <title>Liste des challenges</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/variable.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/challenges.css" />
+    <link rel="stylesheet" href="../css/accueil.css" />
+    <script src="../js/main.js" defer></script>
+    <script src="../js/challenges.js" defer></script>
+    <title>GamerChallenges - Challenges</title>
+  </head>
+
+  <body>
     <header class="header-bar">
-        <div class="site-header">
-            <img src="" alt="logo GamerChallenge" class="logo">
-            <h1 class="site-title">GamerChallenge</h1>
-        </div>
-        <nav class="menu">
-            <ul>
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../pages/challenge/challenges.html">Liste des challenges</a></li>
-                <li><a href="leaderboard.html">Classement</a></li>
-                <li><a href="profil.html">Mon profil</a></li>
-            </ul>
-        </nav>
+      <div class="site-header">
+        <img src="../assets/images/logo.png" alt="logo GamerChallenge" class="logo" />
+        <h1 class="site-title">GamerChallenge</h1>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="challenges.html">Liste des challenges</a></li>
+          <li><a href="../leaderboard.html">Classement</a></li>
+          <li><a href="#" id="loginBtn">Connexion / Inscription</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <h1>Liste des challenges</h1>
-    <label for="rechercher">Rechercher</label><br>
-    <input type="text" id="rechercher" name="rechercher" placeholder="Rechercher..."><br>
+    <main class="page-container">
+      <!-- Barre de recherche -->
+      <section class="search-section">
+        <input type="text" placeholder="Recherche par nom / catégorie" />
+        <button>Rechercher</button>
+      </section>
 
-    <!--Filtres-->
-    <label for="filtre">Filtrer par :</label><br>
-    <select name="filtre" id="filtre">
-    <option value="recents">Les plus récents</option>
-    <option value="populaires">Les plus populaires</option>
-    </select>
+      <!-- Contenu principal -->
+      <section class="content-section">
+        <!-- Colonne gauche -->
+        <aside class="left-column">
+          <button class="create-btn">Créer</button>
+        </aside>
 
-    <section>
-        <h2>Challenges en cours</h2>
+        <!-- Colonne centrale -->
+        <section class="challenge-list">
+          <h2>Nom / catégorie du challenge</h2>
 
-        <ul>
-            <li>
-                <strong>Lorem ipsum dolor sit amet</strong><br>
-                Catégorie : course <br>
-                Popularité : 45 votes <br>
-                Participations : 125 participants <br>
-                <button>Voir</button>
-            </li>
+          <div class="challenge-card">
+            <h3 class="challenge-title">
+              <a href="participate.html" class="challenge-link">Cuillette - FIFA 24</a>
+            </h3>
+          </div>
+          <div class="challenge-card">
+            <h3 class="challenge-title">Autre challenge</h3>
+          </div>
+        </section>
+      </section>
+    </main>
 
-            <li>
-                <strong>Lorem ipsum dolor sit amet</strong><br>
-                Catégorie : aventure <br>
-                Popularité : 45 votes <br>
-                Participations : 125 participants <br>
-                <button>Voir</button>
-            </li>
+    <footer>
+      <p><a href="../legal/legal-notice.html">Mentions légales</a></p>
+      <p><a href="../legal/privacy-policy.html">Politique de confidentialité</a></p>
+      <p><a href="../legal/terms-of-service.html">Conditions générales de ventes (CGU)</a></p>
+    </footer>
 
-            <li>
-                <strong>Lorem ipsum dolor sit amet</strong><br>
-                Catégorie : combat <br>
-                Popularité : 45 votes <br>
-                Participations : 125 participants <br>
-                <button>Voir</button>
-            </li>
-
-            <li>
-                <strong>Lorem ipsum dolor sit amet</strong><br>
-                Catégorie : RPG <br>
-                Popularité : 45 votes <br>
-                Participations : 125 participants <br>
-                <button>Voir</button>
-            </li>
-
-            <li>
-                <strong>Lorem ipsum dolor sit amet</strong><br>
-                Catégorie : horreur <br>
-                Popularité : 45 votes <br>
-                Participations : 125 participants <br>
-                <button>Voir</button>
-            </li>
-
-            <li>
-                <strong>Lorem ipsum dolor sit amet</strong><br>
-                Catégorie : racing <br>
-                Popularité : 45 votes <br>
-                Participations : 125 participants <br>
-                <button>Voir</button>
-            </li>
-        </ul>
-    </section>
-
-    <!--Pop up-->
-
-    <dialog id="popup1">
-        <h3>Lorem ipsum dolor</h3>
-        <p>Objectif : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ante risus, finibus ut mauris non, dapibus rhoncus erat. Suspendisse sagittis auctor mi vel laoreet.</p>
-        <p>Niveau : Intermédiaire</p>
-        <button>Fermer</button>
-    </dialog>
-
-    <dialog id="popup1">
-        <h3>Lorem ipsum dolor</h3>
-        <p>Objectif : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ante risus, finibus ut mauris non, dapibus rhoncus erat. Suspendisse sagittis auctor mi vel laoreet.</p>
-        <p>Niveau : Intermédiaire</p>
-        <button>Fermer</button>
-    </dialog>
-
-    <dialog id="popup1">
-        <h3>Lorem ipsum dolor</h3>
-        <p>Objectif : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ante risus, finibus ut mauris non, dapibus rhoncus erat. Suspendisse sagittis auctor mi vel laoreet.</p>
-        <p>Niveau : Intermédiaire</p>
-        <button>Fermer</button>
-    </dialog>
-
-    <dialog id="popup1">
-        <h3>Lorem ipsum dolor</h3>
-        <p>Objectif : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ante risus, finibus ut mauris non, dapibus rhoncus erat. Suspendisse sagittis auctor mi vel laoreet.</p>
-        <p>Niveau : Intermédiaire</p>
-        <button>Fermer</button>
-    </dialog>
-
-    <dialog id="popup1">
-        <h3>Lorem ipsum dolor</h3>
-        <p>Objectif : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ante risus, finibus ut mauris non, dapibus rhoncus erat. Suspendisse sagittis auctor mi vel laoreet.</p>
-        <p>Niveau : Intermédiaire</p>
-        <button>Fermer</button>
-    </dialog>
-
-     <footer>
-        <p><a href="../legal/legal-notice.html">Mentions légales</a></p>
-        <p><a href="../legal/privacy-policy.html">Politique de confidentialité</a></p>
-        <p><a href="../legal/terms-of-service.html">Conditions générales de ventes (CGU)</a></p>
-    </footer>    
-</body>
+  <!-- Conteneur pour le modal -->
+<div id="modalContainer"></div>
+    </body>
 </html>
