@@ -1,15 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Charger le modal depuis un fichier externe
   const modalContainer = document.getElementById("modalContainer");
+  
+  // Injecter le fragment du modal de création UNIQUEMENT sur la page challenges
+  (async () => {
+    if (!modalContainer) return;
+    const isChallengesPage = /\/challenge\/challenges\.html$/.test(location.pathname) || /challenges\.html$/.test(location.pathname);
+    if (!isChallengesPage) return;
+    if (document.getElementById('createChallengeModal')) return; // déjà présent
+
+    const tryPaths = [
+      '/client/create-challenges-modal.html',
+      '../create-challenges-modal.html',
+      './create-challenges-modal.html',
+      '/create-challenges-modal.html'
+    ];
+    for (const p of tryPaths) {
+      try {
+        const res = await fetch(p);
+        if (!res.ok) { console.debug('create modal fetch not ok', p, res.status); continue; }
+        const html = await res.text();
+        modalContainer.insertAdjacentHTML('beforeend', html);
+        console.log('create-challenges-modal.html loaded from', p);
+        break;
+      } catch (e) {
+        console.debug('fetch error for', p, e);
+      }
+    }
+  })();
   fetch('/client/auth-modal.html')
     .then(response => response.text())
     .then(html => {
-      modalContainer.innerHTML = html;
+      
+      modalContainer.insertAdjacentHTML('beforeend', html);
 
       // Sélection des éléments du modal
       const authModal = document.getElementById("authModal");
       const loginBtn = document.getElementById("loginBtn");
-      const createBtn = document.getElementById("createChallengeBtn");
       const closeModal = document.getElementById("closeModal");
       const switchToRegister = document.getElementById("switchToRegister");
       const switchToLogin = document.getElementById("switchToLogin");
@@ -46,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Événements
       if (loginBtn) loginBtn.addEventListener("click", openModal);
-      if (createBtn) createBtn.addEventListener("click", openModal);
+      // Ne jamais lier le bouton "Créer" au modal de connexion
       if (closeModal) closeModal.addEventListener("click", closeModalFunc);
       if (switchToRegister) switchToRegister.addEventListener("click", showRegister);
       if (switchToLogin) switchToLogin.addEventListener("click", showLogin);

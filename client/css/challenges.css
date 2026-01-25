@@ -38,8 +38,20 @@
 
 .create-btn {
   width: 100%;
-  padding: 15px;
+  padding: 12px 16px;
   font-weight: bold;
+  font-family: "Orbitron", sans-serif;
+  color: var(--text-color);
+  background: transparent;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.create-btn:hover {
+  background: var(--secondary-color);
+  color: var(--surface-color);
 }
 
 /* Liste challenges */
@@ -78,14 +90,19 @@
   text-align: center;
 }
 .challenge-card .challenge-link {
-  color: inherit;
+  color: var(--text-color);
   text-decoration: none;
   display: inline-block;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 8px 12px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .challenge-card .challenge-link:hover {
-  background: rgba(80,227,194,0.08);
+  background-color: var(--secondary-color);
+  color: var(--surface-color);
 }
 
 footer {
@@ -128,3 +145,5 @@ footer a.footer-link:active {
     font-size: 0.95rem;
   }
 }
+
+
