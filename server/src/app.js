@@ -1,6 +1,11 @@
 import express from "express";
 
 import routes from "./routes/base.route.js";
+import challengeRoutes from "./routes/challenge.route.js";
+
+
+
+
 
 const app = express();
 
@@ -11,6 +16,13 @@ app.use(express.json());
 
 // Routes
 app.use("/api", routes);
+app.use("/api/challenges", challengeRoutes);
+
+
+
+
+
+
 // errorHandler 
 
 
