@@ -3,10 +3,11 @@ import { gameController } from "../controllers/game.controller.js";
 
 const router = express.Router();
 
-router.get("/", gameController.getAllGames);    
-router.get("/:id", gameController.getGameById);
-router.post("/", gameController.createGame);
-router.put("/:id", gameController.updateGame);
-router.delete("/:id", gameController.deleteGame);
+router.get("/", gameController.findAll);
+router.post("/", gameController.create);
+router.get("/:id", gameController.findOne);
+router.patch("/:id", gameController.update);
+router.delete("/:id", gameController.delete);
 
-export default router;  
+router.get("/:id/challenges", gameController.findOneWithChallenges); // liste des challenges dans le game_id
+export default router;

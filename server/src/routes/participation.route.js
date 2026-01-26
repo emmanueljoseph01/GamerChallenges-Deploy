@@ -1,12 +1,17 @@
 import express from "express";
-import { participationController } from "../controllers/game.controller.js";
+import { participationController } from "../controllers/participation.controller.js";
 
-const router = express.Router();    
+const router = express.Router();
 
-router.get("/", participationController.getAllParticipations);
-router.get("/:id", participationController.getParticipationById);
-router.post("/", participationController.createParticipation);
-router.put("/:id", participationController.updateParticipation);
-router.delete("/:id", participationController.deleteParticipation);
+router.get("/challenge/:challengeId", participationController.findByChallenge); // Participations d'un challenge
+router.get("/user/:userId", participationController.findByUser); // Participations d'un user
+
+router.get("/", participationController.findAll);
+router.post("/", participationController.create);
+router.get("/:id", participationController.findOne);
+router.patch("/:id", participationController.update);
+router.delete("/:id", participationController.delete);
+
+router.get("/:id/details", participationController.findOneWithDetails); // details d'une participation + votes + challenge + jeu
 
 export default router;

@@ -1,5 +1,5 @@
-import { sequelizeClient } from "../configs/sequelize.client.js";
 import { DataTypes, Model } from "sequelize";
+import { sequelizeClient } from "../configs/sequelize.client.js";
 
 export class Participation extends Model {}
 Participation.init(
@@ -27,7 +27,7 @@ Participation.init(
   },
   {
     sequelize: sequelizeClient,
-    tableName: "participation",
+    tableName: "participations",
     timestamps: true,
     underscored: true,
   }

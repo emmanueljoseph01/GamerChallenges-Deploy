@@ -1,5 +1,5 @@
+import { DataTypes, Model } from "sequelize";
 import { sequelizeClient } from "../configs/sequelize.client.js";
-import { Model, DataTypes } from "sequelize";
 
 export class User extends Model {}
 User.init(
@@ -28,7 +28,7 @@ User.init(
         isDate: true,
       },
     },
-    profile_image: {
+    profil_image: {
       type: DataTypes.STRING,
     },
     role_id: {

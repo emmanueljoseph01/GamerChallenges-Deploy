@@ -1,46 +1,72 @@
 import { StatusCodes } from "http-status-codes";
+
 export const baseController = (Model) => ({
-  create: async (req, res) => {
+  create: async (req, res, next) => {
     try {
-      res.status(StatusCodes.CREATED).json(await Model.create(req.body));
+      const item = await Model.create(req.body);
+      return res.status(StatusCodes.CREATED).json(item);
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      next(error);
     }
   },
 
-  findAll: async (req, res) => {
+  findAll: async (req, res, next) => {
     try {
-    const challenges = await Model.findAll();
-res.status(StatusCodes.OK).json(challenges);
+      const items = await Model.findAll();
+      return res.status(StatusCodes.OK).json(items);
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message }); 
+      next(error);
     }
   },
 
-  findOne: async (req, res) => {
+  findOne: async (req, res, next) => {
     try {
-      const data = await Model.findByPk(req.params.id);
-      data ? res.json(data) : res.status(404).end();
+      const item = await Model.findByPk(req.params.id);
+
+      if (!item) {
+        return res.status(StatusCodes.NOT_FOUND).json({
+          message: "Ressource introuvable",
+        });
+      }
+
+      return res.status(StatusCodes.OK).json(item);
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+      next(error);
     }
   },
 
-  update: async (req, res) => {
+  update: async (req, res, next) => {
     try {
-      const [updated] = await Model.update(req.body, { where: { id: req.params.id } });
-      updated ? res.json(await Model.findByPk(req.params.id)) : res.status(404).end();
+      const element = await Model.findByPk(req.params.id);
+
+      if (!element) {
+        return res.status(StatusCodes.NOT_FOUND).json({
+          message: "Ressource introuvable",
+        });
+      }
+
+      await element.update(req.body);
+      return res.status(StatusCodes.OK).json(element);
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+      next(error);
     }
   },
 
-  delete: async (req, res) => {
+  delete: async (req, res, next) => {
     try {
-      await Model.destroy({ where: { id: req.params.id } });
-      res.status(204).end();
+      const deletedCount = await Model.destroy({
+        where: { id: req.params.id },
+      });
+
+      if (!deletedCount) {
+        return res
+          .status(StatusCodes.NOT_FOUND)
+          .json({ message: "Impossible de supprimer : ressource introuvable" });
+      }
+
+      return res.status(StatusCodes.NO_CONTENT).end();
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+      next(error);
     }
   },
 });
