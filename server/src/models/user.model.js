@@ -31,6 +31,10 @@ User.init(
     profile_image: {
       type: DataTypes.STRING,
     },
+    role_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize: sequelizeClient,

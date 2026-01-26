@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/variable.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/profil.css" />
+
+    <title>Profil utilisateur</title>
+  </head>
+
+  <body class="body">
+    <header class="header-bar">
+      <div class="site-header">
+        <img src="" alt="logo GamerChallenge" class="logo" />
+        <h1 class="site-title">GamerChallenge</h1>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="./index.html">Accueil</a></li>
+          <li>
+            <a href="./challenges.html">Liste des challenges</a>
+          </li>
+          <li><a href="./leaderboard.html">Classement</a></li>
+          <li><a href="./profil.html">Mon profil</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1 class="title">Profil utilisateur</h1>
+
+      <section>
+        <div class="profil-header">
+          <div class="profil-picture">
+            <img
+              src="https://via.placeholder.com/150"
+              alt="Photo de profil"
+              class="avatar"
+            />
+            <form method="post" enctype="multipart/form-data">
+              <input type="file" id="photo" name="photo" accept="image/*" />
+              <button class="button-action" type="submit">Télécharger</button>
+            </form>
+          </div>
+          <div class="profil-action">
+            <button class="button-profil">Modifier mon profil</button>
+            <button class="button-profil">Créer un challenge</button>
+          </div>
+        </div>
+
+        <h2 class="subtitle">Statistiques</h2>
+
+        <ul>
+          <li>Nombre de votes obtenu :</li>
+          <li>Nombre de défis participés:</li>
+        </ul>
+
+        <div class="button-container">
+          <button class="button">Modifier</button>
+          <button class="button">Enregistrer</button>
+          <button class="button">Annuler</button>
+          <button class="button">Déconnexion</button>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer-name">
+        <a href="./legal/legal-notice.html">Mentions légales</a>
+      </p>
+      <p class="footer-name">
+        <a href="./legal/privacy-policy.html">Politique de confidentialité</a>
+      </p>
+      <p class="footer-name">
+        <a href="./legal/terms-of-service.html"
+          >Conditions générales de ventes (CGU)</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

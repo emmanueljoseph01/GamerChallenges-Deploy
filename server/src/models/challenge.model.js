@@ -18,6 +18,14 @@ Challenge.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    game_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize: sequelizeClient,

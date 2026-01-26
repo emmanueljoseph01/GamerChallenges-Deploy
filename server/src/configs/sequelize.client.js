@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { Sequelize } from "sequelize";
 
-const sequelizeClient = new Sequelize({
+export const sequelizeClient = new Sequelize({
   database: process.env.DB_NAME,
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -10,6 +10,7 @@ const sequelizeClient = new Sequelize({
   dialect: process.env.DB_DIALECT,
   logging: false,
 });
+<<<<<<< HEAD
 
 // // Test de la connexion à la base de données
 // sequelizeClient.authenticate()
@@ -21,3 +22,5 @@ const sequelizeClient = new Sequelize({
 //   });
 
 export { sequelizeClient };
+=======
+>>>>>>> a5a4fb113cf9e4830693b130ed9954f0768fc0a4
