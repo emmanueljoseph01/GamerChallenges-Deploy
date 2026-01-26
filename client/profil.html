@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/profil.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/profil.css">
 
     <title>Profil utilisateur</title>
 </head>
@@ -21,10 +21,14 @@
             <img src="" alt="logo GamerChallenge" class="logo">
             <h1 class="site-title">GamerChallenge</h1>
         </div>
+        <button class="burger" aria-label="Menu">
+            ☰
+        </button>
+
         <nav class="menu">
             <ul>
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../pages/challenge/challenges.html">Liste des challenges</a></li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="./challenges.html">Liste des challenges</a></li>
                 <li><a href="leaderboard.html">Classement</a></li>
                 <li><a href="profil.html">Mon profil</a></li>
             </ul>
@@ -44,7 +48,7 @@
                 </div>
                 <div class="profil-action">
                     <button class="button-profil">Modifier mon profil</button>
-                    <button class="button-profil">Créer un challenge</button>
+                    <button id="btnCreateChallenge" class="button-profil">Créer un challenge</button>
                 </div>
             </div>
 
@@ -59,16 +63,18 @@
                 <button class="button">Modifier</button>
                 <button class="button">Enregistrer</button>
                 <button class="button">Annuler</button>
-                <button class="button">Déconnexion</button>
             </div>
+            <button class="button logout-btn">Déconnexion</button>
         </section>
     </main>
     <footer class="footer">
-        <p class="footer-name"><a href="../legal/legal-notice.html">Mentions légales</a></p>
-        <p class="footer-name"><a href="../legal/privacy-policy.html">Politique de confidentialité</a></p>
-        <p class="footer-name"><a href="../legal/terms-of-service.html">Conditions générales de ventes (CGU)</a></p>
+        <p class="footer-name"><a href="./legal/legal-notice.html">Mentions légales</a></p>
+        <p class="footer-name"><a href="./legal/privacy-policy.html">Politique de confidentialité</a></p>
+        <p class="footer-name"><a href="./legal/terms-of-service.html">Conditions générales de ventes (CGU)</a></p>
     </footer>
 
+    <script src="./js/main.js"></script>
+    <script src="./js/profil.js"></script>
 </body>
 
 </html>

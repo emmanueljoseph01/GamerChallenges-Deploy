@@ -59,5 +59,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Switch Connexion / Inscription
     if (switchToRegister) switchToRegister.addEventListener("click", showRegister);
     if (switchToLogin) switchToLogin.addEventListener("click", showLogin);
+
+    // Menu Burger
+    const burger = document.querySelector(".burger");
+    const menu = document.querySelector(".menu");
+
+    if (burger && menu) {
+        burger.addEventListener("click", () => {
+            menu.classList.toggle("open");
+        });
+    }
 });
 
