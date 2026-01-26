@@ -8,13 +8,12 @@ import voteRoutes from "./vote.route.js";
 
 const router = express.Router();
 
-
+router.use("/auth", authRoutes);
 router.use("/games", gameRoutes);
 router.use("/challenges", challengeRoutes);
 router.use("/participations", participationRoutes);
-router.use("/roles", roleRoutes); 
+router.use("/roles", roleRoutes);
 router.use("/users", userRoutes);
-router.use("/votes", voteRoutes);     
+router.use("/votes", voteRoutes);
 
 export default router;
-
