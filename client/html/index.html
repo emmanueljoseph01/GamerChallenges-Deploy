@@ -12,37 +12,42 @@
         <!--menu de navigation-->
         <nav class="navbar">
             <div class="logo">
-    GamerChallenges 
-    <img src="assets/image/logo.png" alt="Logo" class="logo-img">
-           </div>
-              <ul class="nav-links">
-                  <li><a href="#">Accueil</a></li>
-                  <li><a href="#">Liste de challenge</a></li>
-                  <li><a href="#">Classement</a></li>
-                  <li><a href="#">Connexion/Inscription</a></li>
-               </ul>
+                GamerChallenges 
+                <img src="assets/image/logo.png" alt="Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Liste de challenge</a></li>
+                <li><a href="#">Classement</a></li>
+                <!-- liens pop-up connexion/inscription -->
+                <li><a href="#" data-open-login>Connexion</a></li>
+                <li><a href="#" data-open-register>Inscription</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
-  <!-- section accueil -->
+        <!-- section accueil -->
         <section class="hero">
             <h1>Relevez des défis sur vos jeux préférés</h1>
             <p>Crée.Rèleve.Domine.</p>
         </section>
- <!-- bloc defi du mois -->
+
+        <!-- bloc defi du mois -->
         <section class="featured-challenge">
-    <div class="challenge-card">
-        <div class="hero-image-container">
-            <h3 class="hero-text">Meilleure défi du mois</h3>
-        </div>
-    </div>
-</section>
-<!-- bouton creation defi -->
+            <div class="challenge-card">
+                <div class="hero-image-container">
+                    <h3 class="hero-text">Meilleure défi du mois</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- bouton creation defi -->
         <section class="action-section">
             <button class="create-btn">Création d'un challenge</button>
         </section>
-<!-- equipe gamerChallenges -->
+
+        <!-- equipe gamerChallenges -->
         <section class="team-section">
             <h3>Équipe GamerChallenges</h3>
             <div class="team-container">
@@ -57,7 +62,10 @@
 
     <footer>
         <p>Mentions légales</p>
-     </footer>
+    </footer>
+
+    <!-- script pop-up -->
+    <script src="pages/auth/auth.js"></script>
 
 </body>
 </html>
