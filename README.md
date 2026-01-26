@@ -1,5 +1,5 @@
 # apo-GamerChallenges
-
+```
 /
 ├── src/
 │   ├── app.js                    # Point d'entrée de l'application
@@ -36,8 +36,6 @@
 │       └── seedingTables.js      # Données de test
 ├── .env.example
 └── package.json
-
-
 ```
 ## Installation
 
