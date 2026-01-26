@@ -69,3 +69,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('createChallengeModal');
+
+    const createBtn = e.target.closest && e.target.closest('.create-btn');
+    if (createBtn) {
+        // n'ouvrir le modal création QUE depuis la page liste des challenges
+        const isChallengesPage = /challenges\.html$/.test(location.pathname);
+        if (!isChallengesPage) return;
+        if (modal) {
+            modal.classList.add('show');
+            modal.classList.remove('hidden');
+        }
+    }
+
+    if (modal && (e.target.id === 'closeCreateChallenge' || e.target === modal)) {
+        modal.classList.remove('show');
+        modal.classList.add('hidden');
+    }
+});
