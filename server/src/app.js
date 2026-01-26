@@ -9,9 +9,13 @@ app.use(express.json());
 
 // Middleware
 
+// Routes d'auth
+// router.use("/auth", authRoutes);
+
 // Routes
 app.use("/api", router);
-// errorHandler
+
+// Gestion d'erreur
 app.use(errorHandler);
 
 export default app;
