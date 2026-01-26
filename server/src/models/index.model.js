@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import { User } from "./user.model.js";
-import { Challenge } from "./challenge.model.js";
-import { Participation } from "./participation.model.js";
-import { Game } from "./game.model.js";
-import { Role } from "./role.model.js";
-import { sequelizeClient } from "../configs/sequelize.client.js";
-=======
 import { sequelizeClient } from "../configs/sequelize.client.js";
 import { Game } from "./game.model.js";
 import { Challenge } from "./challenge.model.js";
@@ -13,7 +5,6 @@ import { User } from "./user.model.js";
 import { Role } from "./role.model.js";
 import { Vote } from "./vote.model.js";
 import { Participation } from "./participation.model.js";
->>>>>>> a5a4fb113cf9e4830693b130ed9954f0768fc0a4
 
 //
 

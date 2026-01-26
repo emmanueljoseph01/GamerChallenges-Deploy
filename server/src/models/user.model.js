@@ -28,7 +28,7 @@ User.init(
         isDate: true,
       },
     },
-    profile_image: {
+    profil_image: {
       type: DataTypes.STRING,
     },
     role_id: {

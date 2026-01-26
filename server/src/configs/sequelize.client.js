@@ -10,17 +10,3 @@ export const sequelizeClient = new Sequelize({
   dialect: process.env.DB_DIALECT,
   logging: false,
 });
-<<<<<<< HEAD
-
-// // Test de la connexion à la base de données
-// sequelizeClient.authenticate()
-//   .then(() => {
-//     console.log('Connexion à la base de données établie avec succès.');
-//   })
-//   .catch(err => {
-//     console.error('Impossible de se connecter à la base de données:', err);
-//   });
-
-export { sequelizeClient };
-=======
->>>>>>> a5a4fb113cf9e4830693b130ed9954f0768fc0a4
