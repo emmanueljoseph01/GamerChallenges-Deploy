@@ -1,8 +1,6 @@
 import { sequelizeClient } from "../configs/sequelize.client.js";
 import { Model, DataTypes } from "sequelize";
 
-
-
 export class Challenge extends Model {}
 Challenge.init(
   {
