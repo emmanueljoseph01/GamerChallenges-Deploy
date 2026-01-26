@@ -1,58 +1,71 @@
 import { sequelizeClient } from "../configs/sequelize.client.js";
-import { Game } from "./game.model.js";
 import { Challenge } from "./challenge.model.js";
-import { User } from "./user.model.js";
-import { Role } from "./role.model.js";
-import { Vote } from "./vote.model.js";
+import { Game } from "./game.model.js";
 import { Participation } from "./participation.model.js";
+import { Role } from "./role.model.js";
+import { User } from "./user.model.js";
+import { Vote } from "./vote.model.js";
 
-//
+// ============================================
+// ROLE <-> USER
+// ============================================
+// Un rôle peut avoir plusieurs utilisateurs
+Role.hasMany(User, { foreignKey: "role_id" });
+// Un utilisateur appartient à un rôle
+User.belongsTo(Role, { foreignKey: "role_id" });
 
-Role.hasMany(User, { foreignKey: "role_id", as: "users" });
-// Rendre un "Role" obligatoire pour chaque "User" pour éviter "Null"
-User.belongsTo(Role, {
-  foreignKey: { name: "role_id", allowNull: false },
-  as: "role",
-});
+// ============================================
+// USER <-> VOTE
+// ============================================
+// Un utilisateur peut voter plusieurs fois (sur différentes participations)
+User.hasMany(Vote, { foreignKey: "user_id", onDelete: "CASCADE" });
+// Un vote appartient à un utilisateur
+Vote.belongsTo(User, { foreignKey: "user_id" });
 
-User.hasMany(Vote, { foreignKey: "user_id", as: "votes", onDelete: "CASCADE" });
-Vote.belongsTo(User, { foreignKey: "user_id", as: "user" });
-
+// ============================================
+// PARTICIPATION <-> VOTE
+// ============================================
+// Une participation peut recevoir plusieurs votes
 Participation.hasMany(Vote, {
   foreignKey: "participation_id",
-  as: "votes",
   onDelete: "CASCADE",
 });
-Vote.belongsTo(Participation, {
-  foreignKey: "participation_id",
-  as: "participation",
-});
+// Un vote concerne une participation
+Vote.belongsTo(Participation, { foreignKey: "participation_id" });
 
-User.hasMany(Participation, {
-  foreignKey: "user_id",
-  as: "participations",
-  onDelete: "CASCADE",
-});
-Participation.belongsTo(User, { foreignKey: "user_id", as: "user" });
+// ============================================
+// USER <-> PARTICIPATION
+// ============================================
+// Un utilisateur peut participer plusieurs fois (à différents challenges)
+User.hasMany(Participation, { foreignKey: "user_id", onDelete: "CASCADE" });
+// Une participation est créée par un utilisateur
+Participation.belongsTo(User, { foreignKey: "user_id" });
 
-User.hasMany(Challenge, {
-  foreignKey: "user_id",
-  as: "created_challenges",
-  onDelete: "CASCADE",
-});
-Challenge.belongsTo(User, { foreignKey: "user_id", as: "creator" });
+// ============================================
+// USER <-> CHALLENGE
+// ============================================
+// Un utilisateur peut créer plusieurs challenges
+User.hasMany(Challenge, { foreignKey: "user_id", onDelete: "CASCADE" });
+// Un challenge est créé par un utilisateur
+Challenge.belongsTo(User, { foreignKey: "user_id" });
 
+// ============================================
+// CHALLENGE <-> PARTICIPATION
+// ============================================
+// Un challenge peut avoir plusieurs participations
 Challenge.hasMany(Participation, {
   foreignKey: "challenge_id",
-  as: "participations",
   onDelete: "CASCADE",
 });
-Participation.belongsTo(Challenge, {
-  foreignKey: "challenge_id",
-  as: "challenge",
-});
+// Une participation concerne un challenge
+Participation.belongsTo(Challenge, { foreignKey: "challenge_id" });
 
-Game.hasMany(Challenge, { foreignKey: "game_id", as: "challenges" });
-Challenge.belongsTo(Game, { foreignKey: "game_id", as: "game" });
+// ============================================
+// GAME <-> CHALLENGE
+// ============================================
+// Un jeu peut avoir plusieurs challenges
+Game.hasMany(Challenge, { foreignKey: "game_id" });
+// Un challenge concerne un jeu
+Challenge.belongsTo(Game, { foreignKey: "game_id" });
 
-export { User, Challenge, Vote, Participation, Game, Role, sequelizeClient };
+export { Challenge, Game, Participation, Role, sequelizeClient, User, Vote };
