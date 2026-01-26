@@ -1,4 +1,5 @@
 import express from "express";
+import authRoutes from "./auth.routes.js";
 import challengeRoutes from "./challenge.route.js";
 import gameRoutes from "./game.route.js";
 import participationRoutes from "./participation.route.js";
