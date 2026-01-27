@@ -1,8 +1,12 @@
+import cors from "cors";
 import express from "express";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import router from "./routes/index.route.js";
 
 const app = express();
+
+// Sécurité
+app.use(cors());
 
 // Parsing = req.body (JSON)
 app.use(express.json());

@@ -1,6 +1,6 @@
 import argon2 from "argon2";
 import { StatusCodes } from "http-status-codes";
-import { Role, User } from "../models/index.model.js";
+import { Participation, Role, User, Vote } from "../models/index.model.js";
 import { baseController } from "./base.controller.js";
 
 export const userController = {
@@ -30,8 +30,13 @@ export const userController = {
     try {
       const users = await User.findAll({
         attributes: { exclude: ["password"] },
-        include: [{ model: Role }],
-        order: [["username", "ASC"]],
+        include: [
+          { model: Role },
+          {
+            model: Participation,
+            include: [{ model: Vote }],
+          },
+        ],
       });
       return res.status(StatusCodes.OK).json(users);
     } catch (error) {

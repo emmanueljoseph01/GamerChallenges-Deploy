@@ -12,24 +12,24 @@ page-title {
 .title,
 .subtitle,
 .site-title {
-    font-family: "Orbitron", sans-serif; 
-    margin-top: 20px;
-    margin-bottom: 5px; 
+  font-family: "Orbitron", sans-serif;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .body {
-    line-height: 1.5;
-    background: #000;
-    color: #c5bebe;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  line-height: 1.5;
+  background: #000;
+  color: #c5bebe;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    padding: 20px;
-    flex: 1;
-    margin: 15px;
+  padding: 20px;
+  flex: 1;
+  margin: 15px;
 }
 
 /* header */
@@ -137,4 +137,66 @@ main {
 .footer a {
   color: var(--text-color);
   text-decoration: none;
+}
+
+/* Modal Pop-up */
+
+.modal {
+  display: none; /* Caché par défaut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fond sombre */
+  z-index: 1000;
+}
+
+.modal.show {
+  display: flex; /* Flex pour centrer facilement */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #0f0f0f;
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #50e3c2;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(80, 227, 194, 0.2);
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Style des champs du modal */
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #50e3c2;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
 }

@@ -2,175 +2,203 @@
 
 /*conteneur principal du profil */
 .profil-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 20px;
 }
 
 /* bloc photo - formulaire */
 .profil-picture {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 /* image de profil */
 .profil-picture img {
-    width: 180px;
-    height: 180px;
-    border: 2px solid #30c0b7;
-    object-fit: cover;
+  width: 180px;
+  height: 180px;
+  border: 2px solid #30c0b7;
+  object-fit: cover;
 }
 
 /* bloc des boutons modifier/créer un challenge */
 .profil-action {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 0 15px;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 /* bouton télécharger */
 .button-action {
-    padding: 10px 20px;
-    font-weight: bold;
-    border: 2px solid #30c0b7;
-    border-radius: 6px;
-    cursor: pointer;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: 2px solid #30c0b7;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 /* boutons principaux du profil */
 .button-profil {
-    text-decoration: none;
-    color: #c5bebe;
-    background-color: #3b0855;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    padding: 8px 12px;
-    border: 2px solid #30c0b7;
-    font-weight: bold;
-    width: auto;
-    max-width: 300px;
-    text-align: center;
-    margin: 10px auto;
-    display: block;
+  text-decoration: none;
+  color: #c5bebe;
+  background-color: #3b0855;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border: 2px solid #30c0b7;
+  font-weight: bold;
+  width: auto;
+  max-width: 300px;
+  text-align: center;
+  margin: 10px auto;
+  display: block;
 }
 
 .button-profil a:hover {
-    background-color: #30c0b7;
-    border-radius: 5px;
-    color: #3b0855;
+  background-color: #30c0b7;
+  border-radius: 5px;
+  color: #3b0855;
 }
 
 /* boutons secondaires */
 .button {
-    text-decoration: none;
-    color: #c5bebe;
-    background-color: #3b0855;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    padding: 8px 12px;
-    border: 2px solid #30c0b7;
-    font-weight: bold;
-    width: 80%;
-    max-width: 300px;
-    margin: 10px auto;
-    text-align: center;
-    display: block;
+  text-decoration: none;
+  color: #c5bebe;
+  background-color: #3b0855;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border: 2px solid #30c0b7;
+  font-weight: bold;
+  width: 80%;
+  max-width: 300px;
+  margin: 10px auto;
+  text-align: center;
+  display: block;
 }
 
 .button a:hover {
-    background-color: #30c0b7;
-    border-radius: 5px;
-    color: #3b0855;
+  background-color: #30c0b7;
+  border-radius: 5px;
+  color: #3b0855;
 }
 
 /* conteneur des boutons modifier/enregistrer/annuler/déconnexion */
 .button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #50e3c2;
+}
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  background: #222;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 5px;
+}
+.form-group input:disabled {
+  background: #111;
+  color: #888;
+  border: none;
 }
 
 /* ------------ Animations ------------ */
 
 .fade-in {
-    opacity: 0;
-    animation: fadeIn 0.6s forwards;
+  opacity: 0;
+  animation: fadeIn 0.6s forwards;
 }
 
 @keyframes fadeIn {
-    to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 .clicked {
-    transform: scale(0.95);
-    transition: 0.1s;
+  transform: scale(0.95);
+  transition: 0.1s;
 }
 
 /* ------------ Version DESKTOP (>600 px) ------------ */
 @media (min-width: 600px) {
-    /* Profil en deux colonnes. */
-    .profil-header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin: 20px 50px;
-        padding: 0;
-    }
+  /* Profil en deux colonnes. */
+  .profil-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 50px;
+    padding: 0;
+  }
 
-    /* Bloc photo aligné à gauche. */
-    .profil-picture {
-        align-items: flex-start;
-        margin-left: 50px;
-        padding: 20px;
-    }
+  /* Bloc photo aligné à gauche. */
+  .profil-picture {
+    align-items: flex-start;
+    margin-left: 50px;
+    padding: 20px;
+  }
 
-    /* Image plus grande. */
-    .profil-picture img {
-        width: 250px;
-        height: 300px;
-        margin: 20px 50px 20px 0;
-    }
+  /* Image plus grande. */
+  .profil-picture img {
+    width: 250px;
+    height: 300px;
+    margin: 20px 50px 20px 0;
+  }
 
-    /* Boutons alignés à droite. */
-    .profil-action {
-        align-items: flex-end;
-        width: auto;
-        display: none;
-    }
+  /* Boutons alignés à droite. */
+  .profil-action {
+    align-items: flex-end;
+    width: auto;
+    display: none;
+  }
 
-    .button-profil {
-        width: auto;
-        margin-right: 30px;
-        margin-bottom: 15px;
-    }
+  .button-profil {
+    width: auto;
+    margin-right: 30px;
+    margin-bottom: 15px;
+  }
 
-    /* Boutons du bas alignés horizontalement. */
-    .button-container {
-        flex-direction: row;
-        justify-content: flex-end;
-        margin-right: 50px;
-        margin-top: 20px;
-        width: 100%;
-        display: none;
-    }
+  /* Boutons du bas alignés horizontalement. */
+  .button-container {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 50px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+  }
 
-    .logout-btn {
-        margin-left: auto;
-        display: block;
-    }
+  .logout-btn {
+    margin-left: auto;
+    display: block;
+  }
 
-    .button {
-        width: auto;
-        margin-left: 5px;
-    }  
+  .button {
+    width: auto;
+    margin-left: 5px;
+  }
 }
