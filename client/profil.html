@@ -16,7 +16,7 @@
     <script src="./js/main.js" defer></script>
     <script src="./js/profil.js" defer></script>
 
-    <title>Profil utilisateur</title>
+    <title>GamerChallenges - Profil</title>
   </head>
 
   <body class="body">
@@ -48,45 +48,63 @@
         </ul>
       </nav>
     </header>
+
     <main>
       <h1 class="title">Profil utilisateur</h1>
 
-      <section>
+      <section class="profil-container">
         <div class="profil-header">
           <div class="profil-picture">
             <img
               src="https://via.placeholder.com/150"
               alt="Photo de profil"
               class="avatar"
+              id="avatarImg"
             />
-            <form method="post" enctype="multipart/form-data">
-              <input type="file" id="photo" name="photo" accept="image/*" />
-              <button class="button-action" type="submit">Télécharger</button>
-            </form>
           </div>
-          <div class="profil-action">
-            <button class="button-profil">Modifier mon profil</button>
-            <button class="button-profil">Créer un challenge</button>
+
+          <div class="profil-infos">
+            <h2 id="displayUsername">Chargement...</h2>
+            <p>Membre GamerChallenge</p>
           </div>
         </div>
 
-        <h2 class="subtitle">Statistiques</h2>
+        <form id="profileForm">
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" name="username" disabled />
+          </div>
 
-        <ul>
-          <li>Nombre de votes obtenu :</li>
-          <li>Nombre de défis participés:</li>
-        </ul>
+          <div class="form-group">
+            <label for="email">Adresse Email</label>
+            <input type="email" id="email" name="email" disabled />
+          </div>
 
-        <div class="button-container">
-          <button class="button">Modifier</button>
-          <button class="button">Enregistrer</button>
-          <button class="button">Annuler</button>
-        </div>
+          <div class="form-group">
+            <label for="birthdate">Date de naissance</label>
+            <input type="date" id="birthdate" name="birthdate" disabled />
+          </div>
+
+          <div class="button-container">
+            <button type="button" class="button" id="btnModify">
+              Modifier
+            </button>
+
+            <button type="submit" class="button hidden" id="btnSave">
+              Enregistrer
+            </button>
+            <button type="button" class="button hidden" id="btnCancel">
+              Annuler
+            </button>
+          </div>
+        </form>
+
         <div id="logout-button">
           <button class="button" id="logoutAction">Déconnexion</button>
         </div>
       </section>
     </main>
+
     <footer class="footer">
       <p class="footer-name">
         <a href="./legal/legal-notice.html">Mentions légales</a>
