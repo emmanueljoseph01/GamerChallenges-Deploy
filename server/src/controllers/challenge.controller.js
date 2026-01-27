@@ -1,5 +1,11 @@
 import { StatusCodes } from "http-status-codes";
-import { Challenge, Game, Participation, User } from "../models/index.model.js";
+import {
+  Challenge,
+  Game,
+  Participation,
+  User,
+  Vote,
+} from "../models/index.model.js";
 import { baseController } from "./base.controller.js";
 
 const userWithoutPassword = {
@@ -30,7 +36,7 @@ export const challengeController = {
           { model: Game },
           {
             model: Participation,
-            include: [{ ...userWithoutPassword }],
+            include: [{ ...userWithoutPassword }, { model: Vote }],
           },
         ],
       });

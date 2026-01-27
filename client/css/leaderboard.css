@@ -1,163 +1,158 @@
 /* Style général */
 body {
-    background: #1e2124;
-    margin: 0;
-    min-height: 100vh;
-    color: white;
-    font-family: Arial, sans-serif;
+  background: #1e2124;
+  margin: 0;
+  min-height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background-color: #8341e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #8341e6;
 }
 
 .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 5%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 5%;
 }
 
 .main-title {
-    text-align: center;
-     margin-bottom: 40px;
-    color: #50e3c2;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #50e3c2;
 }
 
 /* Tableau */
 .table-header {
-    /* Affiche en ligne */
-    display: flex;
+  /* Affiche en ligne */
+  display: flex;
 
-    /* Fond blanc */
-    background: #f3f3f3;
+  /* Fond blanc */
+  background: #f3f3f3;
 
-    /* Texte noir */
-    color: black;
+  /* Texte noir */
+  color: black;
 
-    /* Espace intérieur */
-    padding: 15px 0;
+  /* Espace intérieur */
+  padding: 15px 0;
 
-    /* Arrondis */
-    border-radius: 5px;
+  /* Arrondis */
+  border-radius: 5px;
 
-    /* Texte en gras */
-    font-weight: bold;
+  /* Texte en gras */
+  font-weight: bold;
 }
 
 /* Ligne de données */
 .table-row {
-    /* Affichage horizontal */
-    display: flex;
+  /* Affichage horizontal */
+  display: flex;
 
-    /* Alignement vertical */
-    align-items: center;
+  /* Alignement vertical */
+  align-items: center;
 
-    /* Espace entre les lignes */
-    margin-top: 30px;
+  /* Espace entre les lignes */
+  margin-top: 30px;
 }
 
 /* Colonne */
 .col {
-    /* Chaque colonne a même largeur */
-    flex: 1;
-    display: flex;
-    justify-content: center;
+  /* Chaque colonne a même largeur */
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 /* Boîte blanche qui contient les donnees */
 .data-card {
-    /* Fond blanc */
-    background: white;
+  /* Fond blanc */
+  background: white;
 
-    /* Texte noir */
-    color: black;
+  /* Texte noir */
+  color: black;
 
-    /* Largeur relative */
-    width: 90%;
+  /* Largeur relative */
+  width: 90%;
 
-    /* Hauteur fixe */
-    height: 45px;
+  /* Hauteur fixe */
+  height: 45px;
 
-    /* Centré le texte */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* Centré le texte */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    /* Arrondis */
-    border-radius: 8px;
+  /* Arrondis */
+  border-radius: 8px;
 
-    /* Bordure violette */
-    border: 2px solid #8341e6;
+  /* Bordure violette */
+  border: 2px solid #8341e6;
 }
 
 /* boite petite pour les nombres (votes et defis) */
 .data-card.small {
-    width: 60px;
+  width: 60px;
 }
 
 /* Avatar  */
 .table-row .member {
-    width: 70px;
-    height: 70px;
-    background: white;
-    color: black;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 footer {
-    /* Centrage du texte */
-    text-align: center;
-    /* Espacement */
-    padding: 20px;
+  /* Centrage du texte */
+  text-align: center;
+  /* Espacement */
+  padding: 20px;
 }
 
 footer a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 footer a:hover,
 footer a:active {
-    color: #50e3c2;
+  color: #50e3c2;
 }
 
-
-
-
-
 @media (max-width: 600px) {
+  /* En-tête et lignes en colonne */
+  .table-header,
+  .table-row {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    /* En-tête et lignes en colonne */
-    .table-header,
-    .table-row {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    /* Colonnes pleine largeur */
-    .col {
-        width: 100%;
-    }
+  /* Colonnes pleine largeur */
+  .col {
+    width: 100%;
+  }
 }

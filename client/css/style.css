@@ -12,24 +12,24 @@ page-title {
 .title,
 .subtitle,
 .site-title {
-    font-family: "Orbitron", sans-serif; 
-    margin-top: 20px;
-    margin-bottom: 5px; 
+  font-family: "Orbitron", sans-serif;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .body {
-    line-height: 1.5;
-    background: #000;
-    color: #c5bebe;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  line-height: 1.5;
+  background: #000;
+  color: #c5bebe;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    padding: 20px;
-    flex: 1;
-    margin: 15px;
+  padding: 20px;
+  flex: 1;
+  margin: 15px;
 }
 
 /* header */

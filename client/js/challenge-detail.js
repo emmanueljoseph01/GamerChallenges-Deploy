@@ -40,19 +40,36 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Affichage des participations
       const participationsDiv = document.getElementById("participationsList");
+
       if (challenge.Participations && challenge.Participations.length > 0) {
-        let html = "";
+        participationsDiv.innerHTML = ""; // On vide d'abord
+
         challenge.Participations.forEach((part) => {
-          html += `
-            <div class="challenge-card" style="margin-bottom:10px; background:#2a2d31;">
-                <h4>${part.title}</h4>
-                <p>Par <strong>${part.User ? part.User.username : "Anonyme"}</strong></p>
-                <p>${part.description || ""}</p>
-                <a href="${part.video_url}" target="_blank" style="color:#50e3c2;">Voir la vidéo</a>
-            </div>
+          // Calcul du nombre de votes
+          const voteCount = part.Votes ? part.Votes.length : 0;
+
+          const card = document.createElement("div");
+          card.classList.add("challenge-card");
+          card.style.marginBottom = "10px";
+          card.style.background = "#2a2d31";
+
+          card.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:start;">
+                    <div>
+                        <h4>${part.title}</h4>
+                        <p>Par <strong>${part.User ? part.User.username : "Anonyme"}</strong></p>
+                        <p>${part.description || ""}</p>
+                        <a href="${part.video_url}" target="_blank" style="color:#50e3c2;">Voir la vidéo</a>
+                    </div>
+                    
+                    <div class="vote-section">
+                        <button class="vote-btn" onclick="voteForParticipation(${part.id})">Voter</button>
+                        <span class="vote-count">${voteCount}</span>
+                    </div>
+                </div>
           `;
+          participationsDiv.appendChild(card);
         });
-        participationsDiv.innerHTML = html;
       } else {
         participationsDiv.innerHTML =
           "<p>Aucune participation pour le moment. Sois le premier !</p>";
@@ -67,19 +84,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // 3. Gestion du bouton "Participer" (Visible uniquement si connecté)
+  // bouton "Participer" uniquement si connecté
   if (token && userId) {
     if (btnParticipate) {
       btnParticipate.classList.remove("hidden");
 
-      // Clic sur le bouton -> Ouvre le modal
       btnParticipate.addEventListener("click", () => {
         document.getElementById("participateModal").classList.add("show");
       });
     }
   }
 
-  // 4. Gestion du Formulaire de Participation
+  // Formulaire de Participation
   const participateForm = document.getElementById("participateForm");
   const closeParticipateBtn = document.getElementById("closeParticipateModal");
   const participateModal = document.getElementById("participateModal");
@@ -138,4 +154,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
   loadChallengeDetails();
+
+  window.voteForParticipation = async (participationId) => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+
+    if (!token) {
+      alert("Connecte-toi pour voter !");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/votes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          participation_id: participationId,
+        }),
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.message || "Erreur lors du vote");
+      }
+
+      // recharge juste le vote pour voir le compteur augmenter
+      loadChallengeDetails();
+    } catch (error) {
+      console.error(error);
+      alert("Impossible de voter (Tu as peut-être déjà voté ?)");
+    }
+  };
 });
