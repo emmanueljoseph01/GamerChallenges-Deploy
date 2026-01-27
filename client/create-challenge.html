@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/challenge.css" />
+    <title>Création d'un challenge</title>
+  </head>
+  <body>
+    <header class="header-bar">
+      <div class="site-header">
+        <img
+          src="./assets/images/logo.png"
+          alt="logo GamerChallenge"
+          class="logo"
+        />
+        <h1 class="site-title">GamerChallenge</h1>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="./index.html">Accueil</a></li>
+          <li><a href="./challenges.html">Liste des challenges</a></li>
+          <li><a href="./leaderboard.html">Classement</a></li>
+
+          <li class="auth-required hidden">
+            <a href="./profil.html">Mon Profil</a>
+          </li>
+          <li class="auth-required hidden">
+            <a href="#" id="logoutBtn">Déconnexion</a>
+          </li>
+
+          <li class="auth-guest">
+            <a href="#" id="loginBtn">Connexion / Inscription</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <h1>Création d'un challenge</h1>
+
+    <form>
+      <label for="pseudonyme">Pseudonyme</label>
+      <input type="text" id="pseudonyme" name="pseudonyme" />
+
+      <label for="nom">Nom du challenge</label>
+      <input type="text" id="nom" name="nom" />
+
+      <label for="categorie">Catégorie</label>
+      <input type="text" id="categorie" name="categorie" />
+
+      <label for="date">Date de création</label>
+      <input type="date" id="date" name="date" name="date" />
+
+      <label for="description">Description / règles du challenge</label>
+      <textarea
+        name="description"
+        id="description"
+        rows="5"
+        cols="40"
+      ></textarea
+      ><br />
+
+      <button type="submit">Envoyer</button>
+    </form>
+    <footer>
+      <p><a href="./legal/legal-notice.html">Mentions légales</a></p>
+      <p>
+        <a href="./legal/privacy-policy.html">Politique de confidentialité</a>
+      </p>
+      <p>
+        <a href="./legal/terms-of-service.html"
+          >Conditions générales de ventes (CGU)</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

@@ -3,23 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/variable.css" />
+    <link rel="stylesheet" href="./css/challenge.css" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/profil.css" />
-
-    <script src="./js/main.js" defer></script>
-    <script src="./js/profil.js" defer></script>
-
-    <title>Profil utilisateur</title>
+    <title>Détails des challenges</title>
   </head>
 
-  <body class="body">
+  <body>
     <header class="header-bar">
       <div class="site-header">
         <img
@@ -48,58 +37,57 @@
         </ul>
       </nav>
     </header>
-    <main>
-      <h1 class="title">Profil utilisateur</h1>
 
-      <section>
-        <div class="profil-header">
-          <div class="profil-picture">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Photo de profil"
-              class="avatar"
-            />
-            <form method="post" enctype="multipart/form-data">
-              <input type="file" id="photo" name="photo" accept="image/*" />
-              <button class="button-action" type="submit">Télécharger</button>
-            </form>
-          </div>
-          <div class="profil-action">
-            <button class="button-profil">Modifier mon profil</button>
-            <button class="button-profil">Créer un challenge</button>
-          </div>
-        </div>
+    <h1>Détails du challenge</h1>
 
-        <h2 class="subtitle">Statistiques</h2>
+    <section>
+      <div>
+        <label for="nom">Nom du challenge</label><br />
+        <input
+          type="text"
+          id="nom"
+          name="nom"
+          value="Lorem ipsum dolor"
+          required
+        />
 
-        <ul>
-          <li>Nombre de votes obtenu :</li>
-          <li>Nombre de défis participés:</li>
-        </ul>
+        <label for="categorie">Catégorie</label>
+        <input
+          type="text"
+          id="categorie"
+          name="categorie"
+          value="categorie"
+          required
+        />
 
-        <div class="button-container">
-          <button class="button">Modifier</button>
-          <button class="button">Enregistrer</button>
-          <button class="button">Annuler</button>
-        </div>
-        <div id="logout-button">
-          <button class="button" id="logoutAction">Déconnexion</button>
-        </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <p class="footer-name">
-        <a href="./legal/legal-notice.html">Mentions légales</a>
-      </p>
-      <p class="footer-name">
+        <label for="date">Date de création</label>
+        <input type="date" id="date" name="date" value="20/01/2026" required />
+
+        <label for="description">Catégorie</label>
+        <textarea name="description" id="description" rows="5" cols="40">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ante risus, finibus ut mauris non, dapibus rhoncus erat. </textarea
+        >
+      </div>
+
+      <div>
+        <label for="Avatar"></label>
+        <img src="" alt="Avatar du créateur" width="150" height="150" />
+      </div>
+    </section>
+
+    <p><a href="./challenges.html"></a>Retour à la liste des challenges.</p>
+    <footer>
+      <p><a href="./legal/legal-notice.html">Mentions légales</a></p>
+      <p>
         <a href="./legal/privacy-policy.html">Politique de confidentialité</a>
       </p>
-      <p class="footer-name">
+      <p>
         <a href="./legal/terms-of-service.html"
           >Conditions générales de ventes (CGU)</a
         >
       </p>
     </footer>
+
     <div class="modal" id="authModal">
       <div class="modal-content">
         <span class="close-modal" id="closeModal">&times;</span>

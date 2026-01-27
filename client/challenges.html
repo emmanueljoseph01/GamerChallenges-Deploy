@@ -20,17 +20,19 @@
   <body>
     <header class="header-bar">
       <div class="site-header">
-        <img src="" alt="logo GamerChallenge" class="logo" />
+        <img src="./assets/images/logo.png" alt="logo GamerChallenge" class="logo" />
         <h1 class="site-title">GamerChallenge</h1>
       </div>
       <nav class="menu">
         <ul>
           <li><a href="./index.html">Accueil</a></li>
-          <li>
-            <a href="./challenges.html">Liste des challenges</a>
-          </li>
+          <li><a href="./challenges.html">Liste des challenges</a></li>
           <li><a href="./leaderboard.html">Classement</a></li>
-          <li><a href="#" id="loginBtn">Connexion / Inscription</a></li>
+          
+          <li class="auth-required hidden"><a href="./profil.html">Mon Profil</a></li>
+          <li class="auth-required hidden"><a href="#" id="logoutBtn">Déconnexion</a></li>
+          
+          <li class="auth-guest"><a href="#" id="loginBtn">Connexion / Inscription</a></li>
         </ul>
       </nav>
     </header>
@@ -76,22 +78,69 @@
       </p>
     </footer>
 
-    <!-- Pop up connexion/inscription -->
     <div class="modal" id="authModal">
       <div class="modal-content">
         <span class="close-modal" id="closeModal">&times;</span>
         <h2 id="modalTitle">Connexion</h2>
+
         <form id="loginForm">
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Mot de passe" required />
+          <label for="loginEmail">Adresse Email</label>
+          <input
+            type="email"
+            name="email"
+            id="loginEmail"
+            placeholder="Email"
+            required
+          />
+
+          <label for="loginPassword">Mot de passe</label>
+          <input
+            type="password"
+            name="password"
+            id="loginPassword"
+            placeholder="Mot de passe"
+            required
+          />
+
+          <p id="loginError" class="error-message"></p>
           <button type="submit">Se connecter</button>
         </form>
+
         <form id="registerForm" class="hidden">
-          <input type="text" placeholder="Pseudo" required />
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Mot de passe" required />
+          <label for="regUser">Nom d'utilisateur</label>
+          <input
+            type="text"
+            name="username"
+            id="regUser"
+            placeholder="Pseudo"
+            required
+          />
+
+          <label for="regEmail">Adresse Email</label>
+          <input
+            type="email"
+            name="email"
+            id="regEmail"
+            placeholder="Email"
+            required
+          />
+
+          <label for="regPass">Mot de passe</label>
+          <input
+            type="password"
+            name="password"
+            id="regPass"
+            placeholder="Mot de passe"
+            required
+          />
+
+          <label for="regDate">Date de naissance</label>
+          <input type="date" name="birthdate" id="regDate" required />
+
+          <p id="registerError" class="error-message"></p>
           <button type="submit">S’inscrire</button>
         </form>
+
         <p class="switch-text">
           <span id="switchToRegister">Créer un compte</span>
           <span id="switchToLogin" class="hidden">Déjà un compte ?</span>
