@@ -57,6 +57,12 @@
           <p id="detailRules">...</p>
         </div>
 
+        <div class="challenge-actions">
+          <button id="btnParticipate" class="button-participate hidden">
+            Relever le défi
+          </button>
+        </div>
+
         <div id="participations">
           <h2>Participations</h2>
           <div id="participationsList"></div>
@@ -68,6 +74,7 @@
       </p>
     </main>
 
+    <!-- POP-UP d'Authentification -->
     <div class="modal" id="authModal">
       <div class="modal-content">
         <span class="close-modal" id="closeModal">&times;</span>
@@ -106,5 +113,44 @@
     <footer>
       <p><a href="./legal/legal-notice.html">Mentions légales</a></p>
     </footer>
+    <!-- POP-UP Participation -->
+    <div class="modal" id="participateModal">
+      <div class="modal-content">
+        <span class="close-modal" id="closeParticipateModal">&times;</span>
+        <h2 class="modal-title">Ma Participation</h2>
+
+        <form id="participateForm" class="challenge-form">
+          <div class="form-group">
+            <label for="partTitle">Titre de ta performance</label>
+            <input
+              type="text"
+              name="title"
+              id="partTitle"
+              placeholder="Ex: Mon speedrun record"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="partVideo">Lien de la vidéo (YouTube/Twitch)</label>
+            <input
+              type="url"
+              name="video_url"
+              id="partVideo"
+              placeholder="https://..."
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="partDesc">Description (Optionnel)</label>
+            <textarea name="description" id="partDesc" rows="3"></textarea>
+          </div>
+
+          <p id="participateError" class="error-message"></p>
+          <button type="submit" class="button-submit">Envoyer ma vidéo</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

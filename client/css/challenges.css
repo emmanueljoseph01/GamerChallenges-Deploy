@@ -132,6 +132,37 @@ footer a.footer-link:active {
   background-color: white;
 }
 
+/* --- Bouton Participer --- */
+.challenge-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end; /* Aligne le bouton à droite */
+}
+
+.button-participate {
+  background-color: #50e3c2;
+  color: #1a1a1b;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+  font-family: "Orbitron", sans-serif;
+}
+
+.button-participate:hover {
+  background-color: white;
+  transform: scale(1.05);
+}
+
+/* Classe utilitaire pour cacher le bouton si pas connecté */
+.hidden {
+  display: none;
+}
 
 @media (max-width: 600px) {
   .navbar {
