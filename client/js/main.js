@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     headerPlaceholder.innerHTML = `
         <div class="site-header">
-            <img src="${basePath}/assets/images/logo.png" alt="logo" class="logo" />
+            <img src="${basePath}/assets/images/logo_gamerchallenge.png" alt="logo" class="logo" />
             <h1 class="site-title">GamerChallenge</h1>
         </div>
         

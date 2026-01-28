@@ -15,6 +15,21 @@
   margin-bottom: 10px;
 }
 
+.challenge-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+.button-participate {
+  width: 45%;
+  max-width: 450px;
+  margin: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 /* Styles des participations */
 .participation-card {
   background: rgba(42, 67, 114, 0.8);
@@ -47,4 +62,8 @@
   color: white;
   margin: 0;
   font-size: 0.9rem;
+}
+
+.challenge-content {
+  margin-bottom: 2rem;
 }

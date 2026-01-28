@@ -88,41 +88,6 @@
   font-style: italic;
 }
 
-/* client/css/challenges.css - Ajouts pour les détails */
-
-/* .participation-card {
-  background: rgba(42, 67, 114, 0.8);
-  margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.participation-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.participation-link {
-  color: #50e3c2;
-  text-decoration: underline;
-  font-size: 0.9rem;
-}
-
-.vote-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-
-.vote-btn-text {
-  color: white;
-  margin: 0;
-  font-size: 0.9rem;
-} */
-
 /* RESPONSIVE PC */
 @media (min-width: 768px) {
   .challenge-list {
