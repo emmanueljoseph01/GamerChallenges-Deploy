@@ -45,7 +45,6 @@
   box-shadow: 0 0 20px rgba(48, 192, 183, 0.2);
 }
 
-/* Texte par dessus le slider */
 .overlay-text {
   position: absolute;
   bottom: 0;

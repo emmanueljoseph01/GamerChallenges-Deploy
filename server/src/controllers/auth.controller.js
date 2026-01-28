@@ -6,7 +6,7 @@ import { Role, User } from "../models/index.model.js";
 export const authController = {
   register: async (req, res, next) => {
     try {
-      const { username, email, password, birthdate, profil_image } = req.body;
+      const { username, email, password, birthdate } = req.body;
 
       const existingUser = await User.findOne({ where: { email } });
       if (existingUser) {
@@ -23,14 +23,14 @@ export const authController = {
       }
 
       const hashedPassword = await argon2.hash(password);
-
+      const defaultAvatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`;
       // Creation du user avec le role "user" par defaut (role_id = 2)
       const user = await User.create({
         username,
         email,
         password: hashedPassword,
         birthdate,
-        profil_image,
+        profil_image: defaultAvatar,
         role_id: 2,
       });
 

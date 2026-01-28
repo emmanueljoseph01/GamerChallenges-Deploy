@@ -21,6 +21,8 @@ export const registerSchema = Joi.object({
     "date.base": "La date de naissance n'est pas valide",
     "any.required": "La date de naissance est requise",
   }),
+
+  consent: Joi.any().strip(),
 });
 
 export const loginSchema = Joi.object({

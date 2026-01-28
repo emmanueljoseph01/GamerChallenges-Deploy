@@ -11,7 +11,7 @@ router.get(
 ); // Tous les votes sur une participation
 
 router.get("/", voteController.findAll);
-router.post("/", isAuthenticated, voteController.create);
+router.post("/toggle", isAuthenticated, voteController.toggle);
 router.get("/:id", voteController.findOne);
 router.patch("/:id", isAuthenticated, voteController.update);
 router.delete("/:id", isAuthenticated, isAdmin, voteController.delete);

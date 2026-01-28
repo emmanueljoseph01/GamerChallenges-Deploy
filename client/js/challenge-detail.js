@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // On charge les challenges
   async function loadChallengeDetails() {
     try {
-      const response = await fetch(`${API_URL}/${challengeId}/details`);
+      const response = await fetch(
+        `${API_URL}/challenges/${challengeId}/details`,
+      );
 
       if (!response.ok) throw new Error("Impossible de charger ce challenge.");
 
@@ -82,15 +84,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // bouton "Participer" uniquement si connecté
-  if (token && userId) {
-    if (btnParticipate) {
-      btnParticipate.classList.remove("hidden");
+  // Bouton participer
+  if (btnParticipate) {
+    btnParticipate.classList.remove("hidden");
 
-      btnParticipate.addEventListener("click", () => {
-        document.getElementById("participateModal").classList.add("show");
-      });
-    }
+    btnParticipate.addEventListener("click", () => {
+      // Si PAS connect > Alert + Pop-up de connexion
+      if (!token || !userId) {
+        alert("Vous devez être connecté pour participer !");
+        window.openAuthModal();
+        return;
+      }
+      document.getElementById("participateModal").classList.add("show");
+    });
   }
 
   // Formulaire de Participation
@@ -156,11 +162,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!token) {
       alert("Connecte-toi pour voter !");
+      window.openAuthModal();
       return;
     }
 
     try {
-      const response = await fetch(`${API_URL}/votes`, {
+      const response = await fetch(`${API_URL}/votes/toggle`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -176,12 +183,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const err = await response.json();
         throw new Error(err.message || "Erreur lors du vote");
       }
-
       // recharge juste le vote pour voir le compteur augmenter
       loadChallengeDetails();
     } catch (error) {
       console.error(error);
-      alert("Impossible de voter (Tu as peut-être déjà voté ?)");
+      alert("Vous avez déjà voté");
     }
   };
 });

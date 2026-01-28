@@ -1,12 +1,10 @@
-/* client/css/challenges.css */
-
-/* --- BARRE D'ACTIONS (Recherche) --- */
+/* --- BARRE Recherche --- */
 .search-section {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  margin-bottom: 30px; /* Espace sous la barre de recherche */
+  margin-bottom: 30px;
   background: rgba(255, 255, 255, 0.03);
   padding: 20px;
   border-radius: 10px;
@@ -24,18 +22,17 @@
 }
 
 /* --- BOUTON CRÉER CENTRÉ --- */
-/* On transforme la colonne de gauche en une barre centrale */
 .left-column {
   width: 100%;
   display: flex;
-  justify-content: center; /* Centre le bouton horizontalement */
-  margin-bottom: 40px; /* Espace entre le bouton et la liste des défis */
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
 .create-btn {
   background: var(--primary-color);
   color: white;
-  padding: 12px 30px; /* Un peu plus large pour le style */
+  padding: 12px 30px;
   border: none;
   font-size: 1.1rem;
   border-radius: 5px;
@@ -55,7 +52,7 @@
 .content-section {
   width: 100%;
   display: flex;
-  flex-direction: column; /* Empile le bouton puis la liste */
+  flex-direction: column;
 }
 
 .challenge-list {
@@ -93,8 +90,8 @@
 
 /* client/css/challenges.css - Ajouts pour les détails */
 
-.participation-card {
-  background: rgba(42, 67, 114, 0.8); /* Fond bleu pour les participations */
+/* .participation-card {
+  background: rgba(42, 67, 114, 0.8);
   margin-bottom: 15px;
   padding: 15px;
   border-radius: 8px;
@@ -124,7 +121,7 @@
   color: white;
   margin: 0;
   font-size: 0.9rem;
-}
+} */
 
 /* RESPONSIVE PC */
 @media (min-width: 768px) {

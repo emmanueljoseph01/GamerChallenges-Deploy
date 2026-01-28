@@ -104,8 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (openBtn) {
     openBtn.addEventListener("click", async () => {
       const token = localStorage.getItem("token");
+
+      // Si PAS connect
       if (!token) {
         alert("Vous devez être connecté pour créer un défi !");
+        window.openAuthModal();
         return;
       }
       createModal.classList.add("show");

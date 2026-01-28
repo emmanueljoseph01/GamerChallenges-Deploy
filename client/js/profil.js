@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
 
       try {
-        const response = await fetch(`${API_URL}/users/me`, {
+        const response = await fetch(`${API_URL}/users/${userId}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

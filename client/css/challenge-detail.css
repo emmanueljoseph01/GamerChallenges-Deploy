@@ -1,0 +1,50 @@
+.challenge-card {
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  transition:
+    border-color 0.3s,
+    transform 0.2s;
+  /* désactive le hover qui fait bouger la carte sur la page détail */
+  transform: none !important;
+}
+
+.challenge-card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+
+/* Styles des participations */
+.participation-card {
+  background: rgba(42, 67, 114, 0.8);
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.participation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.participation-link {
+  color: #50e3c2;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+.vote-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.vote-btn-text {
+  color: white;
+  margin: 0;
+  font-size: 0.9rem;
+}

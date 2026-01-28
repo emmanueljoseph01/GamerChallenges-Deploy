@@ -42,7 +42,6 @@ a {
   transition: 0.3s;
 }
 
-/* Classe utilitaire (Seule exception pour !important car c'est son but) */
 .hidden {
   display: none;
 }
@@ -55,8 +54,6 @@ a {
   position: sticky;
   top: 0;
   z-index: 100;
-
-  /* Flexbox pour écarter Logo (gauche) et Menu (droite) */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,7 +85,7 @@ a {
 .menu a {
   display: block;
   padding: 8px 15px;
-  border: 1px solid transparent; /* Bordure invisible pour éviter le saut au survol */
+  border: 1px solid transparent;
   border-radius: 5px;
   color: white;
 }
@@ -112,11 +109,11 @@ a {
   }
 
   .menu {
-    display: none; /* Caché par défaut */
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    right: 0; /* Juste en dessous du header */
+    right: 0; 
     background: var(--surface-color);
     padding: 20px;
     border-bottom: 2px solid var(--secondary-color);
@@ -125,7 +122,7 @@ a {
 
   .menu.active {
     display: flex;
-  } /* On affiche en flex colonne */
+  }
 
   .menu ul {
     flex-direction: column;
@@ -165,7 +162,6 @@ button {
   transition:
     transform 0.2s,
     filter 0.2s;
-  /* Ombre supprimée ou très légère */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 .button:hover,
@@ -219,4 +215,42 @@ select {
   border: 1px solid #444;
   color: white;
   border-radius: 5px;
+}
+
+/* Checkbox consentement */
+
+.form-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+  text-align: left;
+}
+
+/* Checkbox consentement */
+
+.form-checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+/* Le texte du label */
+.consent-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  margin: 0;
+  display: inline;
+}
+
+.consent-label a {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.consent-label a:hover {
+  color: white;
 }

@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:wght@300;400;600&display=swap");
 
 :root {
-  /* --- PALETTE OFFICIELLE --- */
   --primary-color: #9c117a;
   --secondary-color: #30c0b7;
   --tertiary-color: #d58600;
@@ -16,7 +15,6 @@
   --font-text: "Poppins", sans-serif;
 
   /* --- EFFETS ADOUCIS --- */
-  /* J'ai réduit l'opacité (0.4) et la taille du flou (5px au lieu de 10px) */
   --neon-pink: 0 0 5px rgba(238, 33, 124, 0.4);
   --neon-blue: 0 0 5px rgba(48, 192, 183, 0.4);
   --glass-bg: rgba(59, 8, 85, 0.9);

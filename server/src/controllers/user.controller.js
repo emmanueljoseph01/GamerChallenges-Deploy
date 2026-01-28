@@ -73,7 +73,7 @@ export const userController = {
         });
       }
 
-      const { role_id, password, ...allowedUpdates } = req.body; // Empeche le changement de role
+      const { role_id, password, profil_image, ...allowedUpdates } = req.body; // Empeche le changement de chaque argument dans la liste
 
       if (password) {
         allowedUpdates.password = await argon2.hash(password);
