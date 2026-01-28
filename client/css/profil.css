@@ -1,204 +1,161 @@
-/* ------------ Mobile first ------------ */
+/* --- client/css/profil.css --- */
 
-/*conteneur principal du profil */
+/* Conteneur principal */
+.profil-container {
+  background-color: rgba(26, 26, 27, 0.9);
+  backdrop-filter: blur(5px);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* --- Colonne Identité (Gauche) --- */
 .profil-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
-  padding: 20px;
-}
-
-/* bloc photo - formulaire */
-.profil-picture {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   gap: 15px;
 }
 
-/* image de profil */
+/* C'est ICI que ça se joue pour l'image */
+.profil-picture {
+  /* On s'assure que le div conteneur n'est pas tout petit */
+  width: 220px;
+  height: 220px;
+  flex-shrink: 0; /* Empêche l'image d'être écrasée */
+}
+
 .profil-picture img {
-  width: 180px;
-  height: 180px;
-  border: 2px solid #30c0b7;
-  object-fit: cover;
-}
-
-/* bloc des boutons modifier/créer un challenge */
-.profil-action {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
   width: 100%;
-  padding: 0 15px;
-  box-sizing: border-box;
-}
-
-/* bouton télécharger */
-.button-action {
-  padding: 10px 20px;
-  font-weight: bold;
-  border: 2px solid #30c0b7;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* boutons principaux du profil */
-.button-profil {
-  text-decoration: none;
-  color: #c5bebe;
-  background-color: #3b0855;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  padding: 8px 12px;
-  border: 2px solid #30c0b7;
-  font-weight: bold;
-  width: auto;
-  max-width: 300px;
-  text-align: center;
-  margin: 10px auto;
+  height: 100%;
+  border-radius: 50%; /* Rond parfait */
+  border: 3px solid var(--secondary-color);
+  object-fit: cover; /* L'image remplit le rond sans être déformée */
+  box-shadow: 0 0 15px rgba(80, 227, 194, 0.3);
   display: block;
 }
 
-.button-profil a:hover {
-  background-color: #30c0b7;
-  border-radius: 5px;
-  color: #3b0855;
+.profil-infos h2 {
+  font-size: 1.8rem;
+  margin: 10px 0 5px 0;
+  color: white;
 }
 
-/* boutons secondaires */
-.button {
-  text-decoration: none;
-  color: #c5bebe;
-  background-color: #3b0855;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  padding: 8px 12px;
-  border: 2px solid #30c0b7;
-  font-weight: bold;
-  width: 80%;
-  max-width: 300px;
-  margin: 10px auto;
-  text-align: center;
-  display: block;
+.profil-infos p {
+  color: var(--text-color);
+  font-size: 0.9rem;
 }
 
-.button a:hover {
-  background-color: #30c0b7;
-  border-radius: 5px;
-  color: #3b0855;
-}
-
-/* conteneur des boutons modifier/enregistrer/annuler/déconnexion */
-.button-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
+/* --- Colonne Formulaire (Droite) --- */
+#profileForm {
   width: 100%;
 }
 
 .form-group {
-  margin-bottom: 15px;
-  text-align: left;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 20px;
 }
+
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  color: #50e3c2;
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+  font-weight: bold;
 }
+
 .form-group input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: #222;
   border: 1px solid #444;
   color: white;
   border-radius: 5px;
+  font-family: var(--font-text);
 }
+
 .form-group input:disabled {
-  background: #111;
-  color: #888;
-  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: #aaa;
+  border: 1px solid transparent;
+  cursor: not-allowed;
 }
 
-/* ------------ Animations ------------ */
+/* Boutons */
+.button-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
 
+#logout-button {
+  margin-top: 20px;
+  width: 100%;
+}
+
+#logoutAction {
+  background-color: transparent;
+  border-color: #ff4d4d;
+  color: #ff4d4d;
+}
+
+#logoutAction:hover {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+/* --- VERSION PC (> 900px) --- */
+@media (min-width: 900px) {
+  .profil-container {
+    flex-direction: row; /* Côte à côte */
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 900px;
+    padding: 50px;
+  }
+
+  .profil-header {
+    flex: 1;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 40px;
+    height: 100%;
+    justify-content: center;
+  }
+
+  /* Image plus grande sur PC */
+  .profil-picture {
+    width: 250px;
+    height: 250px;
+  }
+
+  #profileForm {
+    flex: 1.5;
+  }
+
+  .button-container {
+    justify-content: flex-end;
+  }
+}
+
+/* Animation */
 .fade-in {
-  opacity: 0;
-  animation: fadeIn 0.6s forwards;
+  animation: fadeIn 0.8s ease-out;
 }
-
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
-  }
-}
-
-.clicked {
-  transform: scale(0.95);
-  transition: 0.1s;
-}
-
-/* ------------ Version DESKTOP (>600 px) ------------ */
-@media (min-width: 600px) {
-  /* Profil en deux colonnes. */
-  .profil-header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 50px;
-    padding: 0;
-  }
-
-  /* Bloc photo aligné à gauche. */
-  .profil-picture {
-    align-items: flex-start;
-    margin-left: 50px;
-    padding: 20px;
-  }
-
-  /* Image plus grande. */
-  .profil-picture img {
-    width: 250px;
-    height: 300px;
-    margin: 20px 50px 20px 0;
-  }
-
-  /* Boutons alignés à droite. */
-  .profil-action {
-    align-items: flex-end;
-    width: auto;
-    display: none;
-  }
-
-  .button-profil {
-    width: auto;
-    margin-right: 30px;
-    margin-bottom: 15px;
-  }
-
-  /* Boutons du bas alignés horizontalement. */
-  .button-container {
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-right: 50px;
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-  }
-
-  .logout-btn {
-    margin-left: auto;
-    display: block;
-  }
-
-  .button {
-    width: auto;
-    margin-left: 5px;
+    transform: translateY(0);
   }
 }

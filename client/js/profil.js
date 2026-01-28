@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const displayUsername = document.getElementById("displayUsername");
   const avatarImg = document.getElementById("avatarImg");
 
-  // Variables pour stocker les données
+  // Pour stock les prochaines données
   let originalData = {
     username: "",
     email: "",
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Recup des données
   try {
-    const response = await fetch("http://localhost:3000/api/auth/me", {
+    const response = await fetch(`${API_URL}/auth/me`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const user = await response.json();
 
-    // On remplit les champs
+    // Emplacement pour modifer les données du profil
     usernameInput.value = user.username;
     emailInput.value = user.email;
     birthdateInput.value = user.birthdate;
@@ -55,9 +55,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const btnModify = document.getElementById("btnModify");
   const btnSave = document.getElementById("btnSave");
   const btnCancel = document.getElementById("btnCancel");
-  const inputs = [usernameInput, emailInput, birthdateInput];
+  const inputs = [usernameInput, emailInput];
 
-  // A. Activer le mode édition
+  // Activer le mode édition
   if (btnModify) {
     btnModify.addEventListener("click", () => {
       inputs.forEach((input) => (input.disabled = false)); // Déverrouille
@@ -67,12 +67,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // B. Annuler l'édition
+  // Annuler l'édition
   if (btnCancel) {
     btnCancel.addEventListener("click", (e) => {
-      e.preventDefault(); // Stop tout comportement par défaut
+      e.preventDefault();
 
-      // On remet les anciennes valeurs
       usernameInput.value = originalData.username;
       emailInput.value = originalData.email;
       birthdateInput.value = originalData.birthdate;
@@ -80,7 +79,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       // On reverrouille les champs
       inputs.forEach((input) => (input.disabled = true));
 
-      // On cache les boutons
       btnSave.classList.add("hidden");
       btnCancel.classList.add("hidden");
       btnModify.classList.remove("hidden");
@@ -97,21 +95,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       const updatedData = {
         username: usernameInput.value,
         email: emailInput.value,
-        birthdate: birthdateInput.value,
+        // birthdate: birthdateInput.value, // Decommenter le birthdate:... si on veut modifier la donnée dans profil
       };
 
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/users/${userId}`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(updatedData),
+        const response = await fetch(`${API_URL}/users/me`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
-        );
+          body: JSON.stringify(updatedData),
+        });
 
         if (!response.ok) {
           const errorData = await response.json();
@@ -149,9 +144,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
   /* ------------ Animation d'apparition du profil ------------ */
-
-  // Quand la page est complètement chargée, on récupère le bloc principal du profil.
-  // Si trouvé, on lui ajoute la classe qui déclenche l'animation CSS.
   const profilHeader = document.querySelector(".profil-header");
   if (profilHeader) {
     profilHeader.classList.add("fade-in");

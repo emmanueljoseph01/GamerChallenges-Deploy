@@ -4,6 +4,8 @@ import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
+router.get("/leaderboard", userController.getLeaderboard);
+
 router.get("/", userController.findAll);
 router.get("/:id", userController.findOne);
 router.post("/", isAuthenticated, userController.create);

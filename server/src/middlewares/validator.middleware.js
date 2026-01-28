@@ -1,7 +1,9 @@
+import { StatusCodes } from "http-status-codes";
+
 export const validate = (schema) => {
   return (req, res, next) => {
     const { error } = schema.validate(req.body, {
-      abortEarly: false, // Affiche TOUTES les erreurs, pas juste la première
+      abortEarly: false,
     });
 
     if (error) {
