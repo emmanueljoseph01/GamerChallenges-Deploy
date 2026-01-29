@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  # --- Service Base de Données ---
+  db:
+    image: postgres:16-alpine
+    container_name: gamer-db
+    restart: always
+    environment:
+      POSTGRES_USER: manu_chall
+      POSTGRES_PASSWORD: 5challengers
+      POSTGRES_DB: gamer_challenge
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  # --- Service Backend ---
+  api:
+    build: ./server
+    container_name: gamer-api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=manu_chall
+      - DB_PASSWORD=5challengers
+      - DB_NAME=gamer_challenge
+      - DB_PORT=5432
+      - DB_DIALECT=postgres
+      - JWT_SECRET=un_secret_tres_long_et_complique_123456789
+      - JWT_EXPIRES_IN=24h
+      - PORT=3000
+    depends_on:
+      - db
+
+  # --- Service Frontend (Client) ---
+  client:
+    build: ./client
+    container_name: gamer-client
+    ports:
+      - "8080:80" # Port du site
+    depends_on:
+      - api
+
+volumes:
+  db_data:
