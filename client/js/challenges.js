@@ -150,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const userId = localStorage.getItem("userId");
       const formData = new FormData(createForm);
       const data = Object.fromEntries(formData.entries());
-      data.user_id = userId;
 
       try {
         const response = await fetch(`${API_URL}/challenges`, {
