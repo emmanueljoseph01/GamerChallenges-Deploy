@@ -1,8 +1,21 @@
 import "dotenv/config";
 import app from "./src/app.js";
+import { sequelizeClient } from "./src/configs/sequelize.client.js";
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Application démarrée sur http://localhost:${PORT}`);
-});
+async function start() {
+  try {
+    // Vérifie la connexion BDD(SequelizeClient) avant de lancer
+    await sequelizeClient.authenticate();
+    console.log("Connexion BDD réussie.");
+
+    app.listen(PORT, () => {
+      console.log(`Serveur sur le port: ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Impossible de démarrer le serveur:", error);
+  }
+}
+
+start();
