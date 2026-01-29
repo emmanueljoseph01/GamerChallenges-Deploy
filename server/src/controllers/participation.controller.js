@@ -16,6 +16,23 @@ const userWithoutPassword = {
 export const participationController = {
   ...baseController(Participation),
 
+  create: async (req, res, next) => {
+    try {
+      const userIdFromToken = req.user.id; // Identifiant de la personne qui fait la requete
+
+      const data = {
+        ...req.body,
+        user_id: userIdFromToken,
+      };
+
+      const participation = await Participation.create(data);
+
+      return res.status(StatusCodes.CREATED).json(participation);
+    } catch (error) {
+      next(error);
+    }
+  },
+
   findAll: async (req, res, next) => {
     try {
       const participations = await Participation.findAll({
