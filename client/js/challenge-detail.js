@@ -126,7 +126,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         title: titleValue,
         video_url: videoValue,
         description: descValue,
-        user_id: userId,
         challenge_id: challengeId,
       };
 
@@ -174,7 +173,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          user_id: userId,
           participation_id: participationId,
         }),
       });
