@@ -1,6 +1,8 @@
 import express from "express";
 import { voteController } from "../controllers/vote.controller.js";
 import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware.js";
+import { validate } from "../middlewares/validator.middleware.js";
+import { voteSchema } from "../validations/vote.validation.js";
 
 const router = express.Router();
 
@@ -11,9 +13,13 @@ router.get(
 ); // Tous les votes sur une participation
 
 router.get("/", voteController.findAll);
-router.post("/toggle", isAuthenticated, voteController.toggle);
+router.post(
+  "/toggle",
+  isAuthenticated,
+  validate(voteSchema),
+  voteController.toggle
+);
 router.get("/:id", voteController.findOne);
-router.patch("/:id", isAuthenticated, voteController.update);
 router.delete("/:id", isAuthenticated, isAdmin, voteController.delete);
 
 export default router;

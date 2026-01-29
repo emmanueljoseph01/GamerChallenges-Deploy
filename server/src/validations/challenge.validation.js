@@ -35,13 +35,6 @@ export const challengeSchema = Joi.object({
     "number.integer": "L'identifiant du jeu doit être un entier.",
     "any.required": "L'identifiant du jeu est obligatoire.",
   }),
-
-  // l'identifiant de l'utilisateur créateur du challenge
-  user_id: Joi.number().integer().positive().required().messages({
-    "number.base": "L'identifiant utilisateur doit être un nombre.",
-    "number.integer": "L'identifiant utilisateur doit être un entier.",
-    "any.required": "L'identifiant utilisateur est obligatoire.",
-  }),
 });
 
 export const challengeUpdateSchema = Joi.object({

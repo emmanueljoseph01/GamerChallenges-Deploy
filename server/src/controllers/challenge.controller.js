@@ -16,6 +16,23 @@ const userWithoutPassword = {
 export const challengeController = {
   ...baseController(Challenge),
 
+  create: async (req, res, next) => {
+    try {
+      const userIdFromToken = req.user.id; // Identifiant de la personne qui fait la requete
+      
+      const data = {
+        ...req.body, 
+        user_id: userIdFromToken
+      };
+
+      const challenge = await Challenge.create(data);
+      
+      return res.status(StatusCodes.CREATED).json(challenge);
+    } catch (error) {
+      next(error);
+    }
+  },
+
   findAll: async (req, res, next) => {
     try {
       const challenges = await Challenge.findAll({
