@@ -1,22 +1,30 @@
 import "dotenv/config";
 import { Sequelize } from "sequelize";
 
-export const sequelizeClient = new Sequelize({
-  database: process.env.DB_NAME,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  dialect: process.env.DB_DIALECT,
-  logging: false,
-});
+let sequelizeClient;
 
-// // Test de la connexion à la base de données
-// sequelizeClient
-//   .authenticate()
-//   .then(() => {
-//     console.log("Connexion à la base de données établie avec succès.");
-//   })
-//   .catch((err) => {
-//     console.error("Impossible de se connecter à la base de données:", err);
-//   });
+if (process.env.DATABASE_URL) {
+  sequelizeClient = new Sequelize(process.env.DATABASE_URL, {
+    dialect: "postgres",
+    protocol: "postgres",
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  });
+} else {
+  sequelizeClient = new Sequelize({
+    database: process.env.DB_NAME,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: process.env.DB_DIALECT,
+    logging: false,
+  });
+}
+
+export { sequelizeClient };
