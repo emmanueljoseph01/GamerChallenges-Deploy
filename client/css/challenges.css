@@ -1,223 +1,102 @@
-body {
-  background: #1e2124;
-  margin: 0;
-  min-height: 100vh;
-  font-family: "Orbitron", sans-serif;
-}
-
-/* Page*/
-.page-container {
-  padding: 30px;
-}
-
-/* Espace recherche */
+/* --- BARRE Recherche --- */
 .search-section {
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
   margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 10px;
+  flex-wrap: wrap;
 }
 
 .search-section input {
-  flex: 1;
+  width: 100%;
+  max-width: 400px;
   padding: 12px;
+  background: #111;
+  border: 1px solid var(--secondary-color);
+  color: white;
+  border-radius: 5px;
 }
 
-.search-section button {
-  padding: 12px 20px;
-  font-weight: bold;
-}
-
-/* Contenu*/
-.content-section {
-  display: flex;
-  gap: 40px;
-}
-
-/* Colonne gauche */
+/* --- BOUTON CRÉER CENTRÉ --- */
 .left-column {
-  width: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
 .create-btn {
-  width: 100%;
-  padding: 15px;
-  font-weight: bold;
-}
-
-/* Liste challenges */
-.challenge-list {
-  flex: 1;
-}
-
-.challenge-list h2 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.challenge-card {
-  background: #e0e0e0;
-  color: black;
-  padding: 30px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  min-height: 80px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-footer {
-  background: transparent;
-  text-align: center;
-  padding: 20px;
-}
-footer a.footer-link {
+  background: var(--primary-color);
   color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-footer a.footer-link:hover,
-footer a.footer-link:active {
-  color: #50e3c2;
-}
-
-/* --- Style du Modal de Création --- */
-
-.modal-title {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #50e3c2;
-}
-
-.challenge-form .form-group {
-  margin-bottom: 15px;
-}
-
-.challenge-form label {
-  display: block;
-  margin-bottom: 8px;
-  color: #50e3c2;
-  font-weight: bold;
-}
-
-.challenge-form input,
-.challenge-form select,
-.challenge-form textarea {
-  width: 100%;
-  padding: 10px;
-  background-color: #2a2d31;
-  border: 1px solid #555;
-  color: white;
-  border-radius: 5px;
-  font-family: Arial, sans-serif;
-}
-
-.challenge-form textarea {
-  resize: vertical; /* redimensionner uniquement en hauteur */
-}
-
-.button-submit {
-  width: 100%;
-  margin-top: 15px;
-  background-color: #50e3c2;
-  color: #1a1a1b;
-  padding: 12px;
+  padding: 12px 30px;
   border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.button-submit:hover {
-  background-color: white;
-}
-
-/* --- Bouton Participer --- */
-.challenge-actions {
-  margin-top: 25px;
-  display: flex;
-  justify-content: flex-end; /* Aligne le bouton à droite */
-}
-
-.button-participate {
-  background-color: #50e3c2;
-  color: #1a1a1b;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
+  font-size: 1.1rem;
   border-radius: 5px;
   cursor: pointer;
   transition:
     transform 0.2s,
-    background-color 0.2s;
-  font-family: "Orbitron", sans-serif;
+    box-shadow 0.2s;
+  box-shadow: 0 0 10px rgba(238, 33, 124, 0.3);
 }
 
-.button-participate:hover {
-  background-color: white;
+.create-btn:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(238, 33, 124, 0.6);
 }
 
-/* Classe utilitaire pour cacher le bouton si pas connecté */
-.hidden {
-  display: none;
-}
-
-/* --- Système de Vote --- */
-.vote-section {
+/* --- LISTE DES DEFIS --- */
+.content-section {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 10px;
+}
+
+.challenge-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.challenge-card {
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
   border-radius: 8px;
-  min-width: 50px;
+  transition:
+    border-color 0.3s,
+    transform 0.2s;
 }
 
-.vote-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: transform 0.2s;
-  padding: 0;
+.challenge-card:hover {
+  border-color: var(--secondary-color);
+  transform: translateY(-5px);
 }
 
-.vote-btn:hover {
-  transform: scale(1.2);
+.challenge-card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 10px;
 }
 
-.vote-count {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #ee217c; /* Rose néon */
-  margin-top: 5px;
+.challenge-meta {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 15px;
+  font-style: italic;
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
+/* RESPONSIVE PC */
+@media (min-width: 768px) {
+  .challenge-list {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-  }
-  .challenge-list h2 {
-    font-size: 1.3rem;
-  }
-  .challenge-card {
-    padding: 18px 8px;
-    font-size: 1rem;
-  }
-  .create-btn {
-    padding: 10px;
-    font-size: 1rem;
-  }
-  footer {
-    padding: 12px;
-    font-size: 0.95rem;
+}
+
+@media (min-width: 1024px) {
+  .challenge-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

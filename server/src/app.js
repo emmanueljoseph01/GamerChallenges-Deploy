@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import { xss } from "express-xss-sanitizer";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import router from "./routes/index.route.js";
 
@@ -12,9 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Middleware
-
-// Routes d'auth
-// router.use("/auth", authRoutes);
+app.use(xss());
 
 // Routes
 app.use("/api", router);

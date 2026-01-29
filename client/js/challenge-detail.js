@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function loadChallengeDetails() {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/challenges/${challengeId}/details`,
+        `${API_URL}/challenges/${challengeId}/details`,
       );
 
       if (!response.ok) throw new Error("Impossible de charger ce challenge.");
@@ -49,21 +49,21 @@ document.addEventListener("DOMContentLoaded", async () => {
           const voteCount = part.Votes ? part.Votes.length : 0;
 
           const card = document.createElement("div");
-          card.classList.add("challenge-card");
-          card.style.marginBottom = "10px";
-          card.style.background = "#2a2d31";
+          card.classList.add("participation-card");
 
           card.innerHTML = `
-                <div style="display:flex; justify-content:space-between; align-items:start;">
+                <div class="participation-header">
                     <div>
                         <h4>${part.title}</h4>
                         <p>Par <strong>${part.User ? part.User.username : "Anonyme"}</strong></p>
                         <p>${part.description || ""}</p>
-                        <a href="${part.video_url}" target="_blank" style="color:#50e3c2;">Voir la vidéo</a>
+                        <a href="${part.video_url}" target="_blank" class="participation-link">Voir la vidéo</a>
                     </div>
                     
                     <div class="vote-section">
-                        <button class="vote-btn" onclick="voteForParticipation(${part.id})">Voter</button>
+                        <button class="vote-btn" onclick="voteForParticipation(${part.id})">
+                            <p class="vote-btn-text">Voter</p>
+                        </button>
                         <span class="vote-count">${voteCount}</span>
                     </div>
                 </div>
@@ -84,15 +84,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // bouton "Participer" uniquement si connecté
-  if (token && userId) {
-    if (btnParticipate) {
-      btnParticipate.classList.remove("hidden");
+  // Bouton participer
+  if (btnParticipate) {
+    btnParticipate.classList.remove("hidden");
 
-      btnParticipate.addEventListener("click", () => {
-        document.getElementById("participateModal").classList.add("show");
-      });
-    }
+    btnParticipate.addEventListener("click", () => {
+      // Si PAS connect > Alert + Pop-up de connexion
+      if (!token || !userId) {
+        alert("Vous devez être connecté pour participer !");
+        window.openAuthModal();
+        return;
+      }
+      document.getElementById("participateModal").classList.add("show");
+    });
   }
 
   // Formulaire de Participation
@@ -127,17 +131,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
 
       try {
-        const response = await fetch(
-          "http://localhost:3000/api/participations",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(data),
+        const response = await fetch(`${API_URL}/participations`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
-        );
+          body: JSON.stringify(data),
+        });
 
         if (!response.ok) throw new Error("Erreur lors de l'envoi");
 
@@ -161,11 +162,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!token) {
       alert("Connecte-toi pour voter !");
+      window.openAuthModal();
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/votes", {
+      const response = await fetch(`${API_URL}/votes/toggle`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -181,12 +183,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const err = await response.json();
         throw new Error(err.message || "Erreur lors du vote");
       }
-
       // recharge juste le vote pour voir le compteur augmenter
       loadChallengeDetails();
     } catch (error) {
       console.error(error);
-      alert("Impossible de voter (Tu as peut-être déjà voté ?)");
+      alert("Vous avez déjà voté");
     }
   };
 });

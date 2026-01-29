@@ -2,33 +2,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const leaderboardContent = document.getElementById("leaderboardContent");
 
   try {
-    const response = await fetch("http://localhost:3000/api/users");
+    // On appelle la nouvelle route optimisée
+    const response = await fetch(`${API_URL}/users/leaderboard`);
     if (!response.ok) throw new Error("Impossible de charger le classement");
 
-    let users = await response.json();
-    users = users.map((user) => {
-      const nbDefis = user.Participations ? user.Participations.length : 0;
-
-      let nbVotes = 0;
-      if (user.Participations) {
-        user.Participations.forEach((participation) => {
-          if (participation.Votes) {
-            nbVotes += participation.Votes.length;
-          }
-        });
-      }
-
-      return { ...user, nbDefis, nbVotes };
-    });
-
-    // TRI DU CLASSEMENT
-    users.sort((a, b) => {
-      if (b.nbDefis !== a.nbDefis) {
-        return b.nbDefis - a.nbDefis;
-      }
-      // Si égalité on fait selon le nombre de vote
-      return b.nbVotes - a.nbVotes;
-    });
+    const users = await response.json();
 
     leaderboardContent.innerHTML = "";
 
@@ -55,23 +33,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       const avatarSrc = user.profil_image || "https://via.placeholder.com/150";
 
       row.innerHTML = `
-                <div class="col">
-                    <span class="rank ${rankClass}" style="margin-right:15px; font-size:1.2rem; width:30px;">${rankDisplay}</span>
-                    <div class="member">
-                        <img src="${avatarSrc}" alt="avatar" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
-                    </div>
-                    <span style="margin-left: 10px; font-weight:bold;">${user.username}</span>
-                </div>
-                
-                <div class="col">
-                    <div class="data-card small">${user.nbDefis}</div>
-                </div>
-                
-                <div class="col">
-                    <div class="data-card small" style="border-color: #ee217c;">${user.nbVotes}</div>
-                </div>
-            `;
-
+        <div class="col user-info">
+            <span class="rank ${rankClass}">${rankDisplay}</span>
+            <div class="member">
+                <img src="${avatarSrc}" alt="avatar">
+            </div>
+            <span class="username">${user.username}</span>
+        </div>
+        
+        <div class="col stats">
+            <div class="data-card small" title="Nombre de défis relevés">
+               ⚔️ ${user.nbDefis} <span class="mobile-label">Défis</span>
+            </div>
+        </div>
+        
+        <div class="col stats">
+            <div class="data-card small" style="border-color: #ee217c;" title="Votes reçus">
+               ❤️ ${user.nbVotes} <span class="mobile-label">Votes</span>
+            </div>
+        </div>
+    `;
       leaderboardContent.appendChild(row);
     });
   } catch (error) {

@@ -73,7 +73,7 @@ export const userController = {
         });
       }
 
-      const { role_id, password, ...allowedUpdates } = req.body; // Empeche le changement de role
+      const { role_id, password, profil_image, ...allowedUpdates } = req.body; // Empeche le changement de chaque argument dans la liste
 
       if (password) {
         allowedUpdates.password = await argon2.hash(password);
@@ -86,6 +86,48 @@ export const userController = {
         include: [{ model: Role }],
       });
       return res.status(StatusCodes.OK).json(userWithoutPassword);
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  getLeaderboard: async (req, res, next) => {
+    try {
+      const users = await User.findAll({
+        attributes: { exclude: ["password", "email", "role_id", "birthdate"] },
+        include: [
+          {
+            model: Participation,
+            include: [{ model: Vote }],
+          },
+        ],
+      });
+
+      const rankedUsers = users
+        .map((user) => {
+          const u = user.toJSON();
+          // Calcul des Défis
+          u.nbDefis = u.Participations ? u.Participations.length : 0;
+          // Calcul des Votes
+          u.nbVotes = u.Participations
+            ? u.Participations.reduce(
+                (acc, p) => acc + (p.Votes ? p.Votes.length : 0),
+                0
+              )
+            : 0;
+
+          delete u.Participations;
+          return u;
+        })
+        .sort((a, b) => {
+          // Tri par Défis
+          if (b.nbDefis !== a.nbDefis) return b.nbDefis - a.nbDefis;
+          // Tri par Votes
+          return b.nbVotes - a.nbVotes;
+        })
+        .slice(0, 25); // Max 25 dans le classement
+
+      return res.status(StatusCodes.OK).json(rankedUsers);
     } catch (error) {
       next(error);
     }

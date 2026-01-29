@@ -1,4 +1,5 @@
 import { sequelizeClient } from "../models/index.model.js";
+
 async function initDB() {
   try {
     console.log("Drop tables..");

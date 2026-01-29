@@ -1,23 +1,21 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:wght@300;400;600&display=swap");
 
 :root {
-  /* Couleurs principales et accents */
-  --primary-color: #ee217c; /* Rose néon */
-  --secondary-color: #30c0b7; /* Turquoise */
-  --tertiary-color: #d58600; /* Orange */
+  --primary-color: #9c117a;
+  --secondary-color: #30c0b7;
+  --tertiary-color: #d58600;
 
-  /* Couleurs de structure */
-  --bg-color: #1a1a1b; /* Noir profond */
-  --surface-color: #3b0855; /* Violet foncé */
-  --text-color: #c5bebe; /* Gris clair */
-  /* --font-gaming: "Orbitron", sans-serif; */
+  --bg-color: #1a1a1b;
+  --surface-color: #3b0855;
+
+  --text-main: #ffffff;
+  --text-muted: #c5bebe;
+
+  --font-title: "Orbitron", sans-serif;
+  --font-text: "Poppins", sans-serif;
+
+  /* --- EFFETS ADOUCIS --- */
+  --neon-pink: 0 0 5px rgba(238, 33, 124, 0.4);
+  --neon-blue: 0 0 5px rgba(48, 192, 183, 0.4);
+  --glass-bg: rgba(59, 8, 85, 0.9);
 }
-
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  letter-spacing: 0.04em;
-} */

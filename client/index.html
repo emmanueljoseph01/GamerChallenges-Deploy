@@ -18,58 +18,79 @@
   </head>
 
   <body>
-    <header class="header-bar">
-      <div class="site-header">
-        <img
-          src="./assets/images/logo.png"
-          alt="logo GamerChallenge"
-          class="logo"
-        />
-        <h1 class="site-title">GamerChallenge</h1>
-      </div>
-      <nav class="menu">
-        <ul>
-          <li><a href="./index.html">Accueil</a></li>
-          <li><a href="./challenges.html">Liste des challenges</a></li>
-          <li><a href="./leaderboard.html">Classement</a></li>
-
-          <li class="auth-required hidden">
-            <a href="./profil.html">Mon Profil</a>
-          </li>
-          <li class="auth-required hidden">
-            <a href="#" id="logoutBtn">Déconnexion</a>
-          </li>
-
-          <li class="auth-guest">
-            <a href="#" id="loginBtn">Connexion / Inscription</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <header class="header-bar"></header>
 
     <main>
       <section class="hero">
-        <h1>Relevez des défis sur vos jeux préférés</h1>
-        <p>Crée. Relève. Domine.</p>
+        <h1 class="glitch-effect">Relevez des défis Légendaires</h1>
+        <p>Créé, Relève, Domine.</p>
+        <div class="hero-actions">
+          <a href="./challenges.html" class="button cta-button"
+            >Relever un défi</a
+          >
+        </div>
       </section>
 
       <section class="featured-challenge">
-        <div class="challenge-card">
-          <div class="hero-image-container">
-            <h3 class="hero-text">Choisi ton challenge</h3>
-            <div class="slider">
-              <img
-                src="./assets/images/bg-image.webp"
-                class="slide active"
-                alt="Image 1"
-              />
-            </div>
+        <div class="hero-image-container">
+          <div class="overlay-text">
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+              dolorum optio fugit magnam, animi temporibus.
+            </p>
+          </div>
+          <div class="slider">
+            <img
+              src="./assets/images/mario-kart_wallpaper.webp"
+              class="slide active"
+              alt="Gaming Setup"
+            />
+            <img
+              src="./assets/images/minecraft_wallpaper.webp"
+              class="slide"
+              alt="Gaming Background"
+            />
+            <img
+              src="./assets/images/rocket-league_wallpaper.webp"
+              class="slide"
+              alt="Action Game"
+            />
+          </div>
+
+          <button class="slider-btn prev">❮</button>
+          <button class="slider-btn next">❯</button>
+        </div>
+      </section>
+
+      <section class="how-it-works">
+        <h2 class="section-title">Comment ça marche ?</h2>
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-icon">🎯</div>
+            <h3>Choisis un Défi</h3>
+            <p>
+              Parcoure la liste des défis sur tes jeux favoris (LoL, Minecraft,
+              FIFA...).
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">🎮</div>
+            <h3>Enregistre ta perf'</h3>
+            <p>
+              Réalise l'exploit demandé et upload ta vidéo (YouTube/Twitch).
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">🏆</div>
+            <h3>Grimpe le Ladder</h3>
+            <p>Reçois des votes de la communauté et deviens le numéro 1.</p>
           </div>
         </div>
       </section>
 
       <section class="team-section">
-        <h3>Équipe GamerChallenges</h3>
+        <h3>L'équipe GamerChallenges</h3>
         <div class="team-container">
           <div class="member">Bilel</div>
           <div class="member">Emmanuel</div>
@@ -80,86 +101,6 @@
       </section>
     </main>
 
-    <footer>
-      <p><a href="./legal/legal-notice.html">Mentions légales</a></p>
-      <p>
-        <a href="./legal/privacy-policy.html">Politique de confidentialité</a>
-      </p>
-      <p>
-        <a href="./legal/terms-of-service.html"
-          >Conditions générales de ventes (CGU)</a
-        >
-      </p>
-    </footer>
-
-    <div class="modal" id="authModal">
-      <div class="modal-content">
-        <span class="close-modal" id="closeModal">&times;</span>
-        <h2 id="modalTitle">Connexion</h2>
-
-        <form id="loginForm">
-          <label for="loginEmail">Adresse Email</label>
-          <input
-            type="email"
-            name="email"
-            id="loginEmail"
-            placeholder="Email"
-            required
-          />
-
-          <label for="loginPassword">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            id="loginPassword"
-            placeholder="Mot de passe"
-            required
-          />
-
-          <p id="loginError" class="error-message"></p>
-          <button type="submit">Se connecter</button>
-        </form>
-
-        <form id="registerForm" class="hidden">
-          <label for="regUser">Nom d'utilisateur</label>
-          <input
-            type="text"
-            name="username"
-            id="regUser"
-            placeholder="Pseudo"
-            required
-          />
-
-          <label for="regEmail">Adresse Email</label>
-          <input
-            type="email"
-            name="email"
-            id="regEmail"
-            placeholder="Email"
-            required
-          />
-
-          <label for="regPass">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            id="regPass"
-            placeholder="Mot de passe"
-            required
-          />
-
-          <label for="regDate">Date de naissance</label>
-          <input type="date" name="birthdate" id="regDate" required />
-
-          <p id="registerError" class="error-message"></p>
-          <button type="submit">S’inscrire</button>
-        </form>
-
-        <p class="switch-text">
-          <span id="switchToRegister">Créer un compte</span>
-          <span id="switchToLogin" class="hidden">Déjà un compte ?</span>
-        </p>
-      </div>
-    </div>
+    <footer></footer>
   </body>
 </html>
