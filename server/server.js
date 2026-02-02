@@ -6,7 +6,6 @@ const PORT = process.env.PORT || 3000;
 
 async function start() {
   try {
-    // Vérifie la connexion BDD(SequelizeClient) avant de lancer
     await sequelizeClient.authenticate();
     console.log("Connexion BDD réussie.");
 

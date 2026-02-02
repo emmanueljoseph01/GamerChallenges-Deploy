@@ -15,19 +15,16 @@ export const voteController = {
       const user_id = req.user.id; // Vient du token
       const { participation_id } = req.body;
 
-      // 1. On cherche si le vote existe déjà
       const existingVote = await Vote.findOne({
         where: { user_id, participation_id },
       });
 
       if (existingVote) {
-        // 2. Si oui, on le supprime (UNVOTE)
         await existingVote.destroy();
         return res
           .status(StatusCodes.OK)
           .json({ message: "Vote retiré", voted: false });
       } else {
-        // 3. Si non, on le crée (VOTE)
         await Vote.create({ user_id, participation_id });
         return res
           .status(StatusCodes.CREATED)
