@@ -18,7 +18,6 @@ export const userSchema = Joi.object({
     "any.required": "La date de naissance est requise",
   }),
   profil_image: Joi.string().uri().allow(null, ""),
-  role_id: Joi.number().integer().positive().required(),
 });
 
 export const userUpdateSchema = Joi.object({
@@ -27,5 +26,4 @@ export const userUpdateSchema = Joi.object({
   password: Joi.string().min(8),
   birthdate: Joi.date(),
   profil_image: Joi.string().uri().allow(null, ""),
-  role_id: Joi.number().integer().positive(),
 }).min(1);
