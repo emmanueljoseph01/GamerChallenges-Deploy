@@ -1,5 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
+import { Role } from "../models/role.model.js";
+import { User } from "../models/user.model.js";
 
 // vérifier la connexion de l'utilisateur
 export const isAuthenticated = (req, res, next) => {
@@ -25,21 +27,6 @@ export const isAuthenticated = (req, res, next) => {
 };
 
 // Si le user a le role "admin"
-export const isAdmin = (req, res, next) => {
-  try {
-    if (!req.user) {
-      return res.status(StatusCodes.UNAUTHORIZED).json({
-        message: "Non authentifié",
-      });
-    }
-
-    next();
-  } catch (error) {
-    return res.status(StatusCodes.FORBIDDEN).json({
-      message: "Accès refusé",
-    });
-  }
-};
 
 export const isOwnerOrAdmin = (Model) => async (req, res, next) => {
   try {
@@ -51,7 +38,11 @@ export const isOwnerOrAdmin = (Model) => async (req, res, next) => {
         .json({ message: "Ressource introuvable" });
     }
 
-    const isAdmin = req.user.role_id === 1; // temporaire, à remplacer par checkRole après
+    const user = await User.findByPk(req.user.id, {
+      include: [{ model: Role }],
+    });
+
+    const isAdmin = user?.Role?.name === "admin";
     const isOwner = resource.user_id === req.user.id;
 
     if (!isOwner && !isAdmin) {
