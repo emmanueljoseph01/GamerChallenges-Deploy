@@ -33,16 +33,35 @@ export const isAdmin = (req, res, next) => {
       });
     }
 
-    if (req.user.role_id !== 1) {
-      return res.status(StatusCodes.FORBIDDEN).json({
-        message: "Accès réservé aux administrateurs",
-      });
-    }
-
     next();
   } catch (error) {
     return res.status(StatusCodes.FORBIDDEN).json({
       message: "Accès refusé",
     });
+  }
+};
+
+export const isOwnerOrAdmin = (Model) => async (req, res, next) => {
+  try {
+    const resource = await Model.findByPk(req.params.id);
+
+    if (!resource) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: "Ressource introuvable" });
+    }
+
+    const isAdmin = req.user.role_id === 1; // temporaire, à remplacer par checkRole après
+    const isOwner = resource.user_id === req.user.id;
+
+    if (!isOwner && !isAdmin) {
+      return res
+        .status(StatusCodes.FORBIDDEN)
+        .json({ message: "Accès refusé" });
+    }
+
+    next();
+  } catch (error) {
+    next(error);
   }
 };

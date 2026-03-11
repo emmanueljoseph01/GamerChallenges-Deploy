@@ -1,6 +1,7 @@
 import express from "express";
 import { gameController } from "../controllers/game.controller.js";
-import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware.js";
+import { isAuthenticated } from "../middlewares/auth.middleware.js";
+import { checkRole } from "../middlewares/checkRole.middleware.js";
 import { validate } from "../middlewares/validator.middleware.js";
 import {
   gameSchema,
@@ -18,7 +19,12 @@ router.patch(
   validate(gameUpdateSchema),
   gameController.update
 );
-router.delete("/:id", isAuthenticated, isAdmin, gameController.delete);
+router.delete(
+  "/:id",
+  isAuthenticated,
+  checkRole(["admin"]),
+  gameController.delete
+);
 
 router.get("/:id/challenges", gameController.findOneWithChallenges); // liste des challenges dans le game_id
 

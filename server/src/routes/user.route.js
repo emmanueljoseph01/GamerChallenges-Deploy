@@ -1,7 +1,12 @@
 import express from "express";
 import { userController } from "../controllers/user.controller.js";
-import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware.js";
+import {
+  isAuthenticated,
+  isOwnerOrAdmin,
+} from "../middlewares/auth.middleware.js";
+import { checkRole } from "../middlewares/checkRole.middleware.js";
 import { validate } from "../middlewares/validator.middleware.js";
+import { User } from "../models/user.model.js";
 import {
   userSchema,
   userUpdateSchema,
@@ -17,9 +22,15 @@ router.post("/", isAuthenticated, validate(userSchema), userController.create);
 router.patch(
   "/:id",
   isAuthenticated,
+  isOwnerOrAdmin(User),
   validate(userUpdateSchema),
   userController.update
 );
-router.delete("/:id", isAuthenticated, isAdmin, userController.delete);
+router.delete(
+  "/:id",
+  isAuthenticated,
+  checkRole(["admin"]),
+  userController.delete
+);
 
 export default router;
