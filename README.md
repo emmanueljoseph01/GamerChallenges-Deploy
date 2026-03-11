@@ -134,7 +134,7 @@ Le projet est entièrement conteneurisé. Docker est requis.
 
 ```bash
 # 1. Cloner le dépôt
-git clone https://github.com/emmanueljoseph01/gamerchallenges.git
+git clone https://github.com/emmanueljoseph01/GamerChallenges-Deploy.git
 cd gamerchallenges
 
 # 2. Configurer l'environnement
