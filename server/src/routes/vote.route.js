@@ -1,6 +1,7 @@
 import express from "express";
 import { voteController } from "../controllers/vote.controller.js";
-import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware.js";
+import { isAuthenticated } from "../middlewares/auth.middleware.js";
+import { checkRole } from "../middlewares/checkRole.middleware.js";
 import { validate } from "../middlewares/validator.middleware.js";
 import { voteSchema } from "../validations/vote.validation.js";
 
@@ -20,6 +21,11 @@ router.post(
   voteController.toggle
 );
 router.get("/:id", voteController.findOne);
-router.delete("/:id", isAuthenticated, isAdmin, voteController.delete);
+router.delete(
+  "/:id",
+  isAuthenticated,
+  checkRole(["admin"]),
+  voteController.delete
+);
 
 export default router;

@@ -1,7 +1,12 @@
 import express from "express";
 import { participationController } from "../controllers/participation.controller.js";
-import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware.js";
+import {
+  isAuthenticated,
+  isOwnerOrAdmin,
+} from "../middlewares/auth.middleware.js";
+import { checkRole } from "../middlewares/checkRole.middleware.js";
 import { validate } from "../middlewares/validator.middleware.js";
+import { Participation } from "../models/participation.model.js";
 import {
   participationSchema,
   participationUpdateSchema,
@@ -23,10 +28,16 @@ router.get("/:id", participationController.findOne);
 router.patch(
   "/:id",
   isAuthenticated,
+  isOwnerOrAdmin(Participation),
   validate(participationUpdateSchema),
   participationController.update
 );
-router.delete("/:id", isAuthenticated, isAdmin, participationController.delete);
+router.delete(
+  "/:id",
+  isAuthenticated,
+  checkRole(["admin"]),
+  participationController.delete
+);
 
 router.get("/:id/details", participationController.findOneWithDetails); // details d'une participation + votes + challenge + jeu
 

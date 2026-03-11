@@ -5,9 +5,9 @@ services:
     container_name: gamer-db
     restart: always
     environment:
-      POSTGRES_USER: manu_chall
-      POSTGRES_PASSWORD: 5challengers
-      POSTGRES_DB: gamer_challenge
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     volumes:
@@ -22,13 +22,13 @@ services:
       - "3000:3000"
     environment:
       - DB_HOST=db
-      - DB_USER=manu_chall
-      - DB_PASSWORD=5challengers
-      - DB_NAME=gamer_challenge
-      - DB_PORT=5432
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_NAME=${POSTGRES_DB}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
       - DB_DIALECT=postgres
-      - JWT_SECRET=un_secret_tres_long_et_complique_123456789
-      - JWT_EXPIRES_IN=24h
+      - DB_PORT=5432
       - PORT=3000
     depends_on:
       - db

@@ -1,5 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
+import { Role } from "../models/role.model.js";
+import { User } from "../models/user.model.js";
 
 // vérifier la connexion de l'utilisateur
 export const isAuthenticated = (req, res, next) => {
@@ -25,24 +27,32 @@ export const isAuthenticated = (req, res, next) => {
 };
 
 // Si le user a le role "admin"
-export const isAdmin = (req, res, next) => {
+
+export const isOwnerOrAdmin = (Model) => async (req, res, next) => {
   try {
-    if (!req.user) {
-      return res.status(StatusCodes.UNAUTHORIZED).json({
-        message: "Non authentifié",
-      });
+    const resource = await Model.findByPk(req.params.id);
+
+    if (!resource) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: "Ressource introuvable" });
     }
 
-    if (req.user.role_id !== 1) {
-      return res.status(StatusCodes.FORBIDDEN).json({
-        message: "Accès réservé aux administrateurs",
-      });
+    const user = await User.findByPk(req.user.id, {
+      include: [{ model: Role }],
+    });
+
+    const isAdmin = user?.Role?.name === "admin";
+    const isOwner = resource.user_id === req.user.id;
+
+    if (!isOwner && !isAdmin) {
+      return res
+        .status(StatusCodes.FORBIDDEN)
+        .json({ message: "Accès refusé" });
     }
 
     next();
   } catch (error) {
-    return res.status(StatusCodes.FORBIDDEN).json({
-      message: "Accès refusé",
-    });
+    next(error);
   }
 };
