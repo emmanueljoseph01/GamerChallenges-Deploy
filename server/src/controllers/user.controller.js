@@ -1,26 +1,11 @@
-import argon2 from "argon2";
 import { StatusCodes } from "http-status-codes";
-import { Participation, Role, User, Vote } from "../models/index.model.js";
-import { baseController } from "./base.controller.js";
+import { userService } from "../services/user.service.js";
 
 export const userController = {
-  ...baseController(User),
-
   create: async (req, res, next) => {
     try {
-      // On hash le mdp a la creation, puis on envoie le body avec le password hash avec Argon2
-      const hashedPassword = await argon2.hash(req.body.password);
-
-      const user = await User.create({
-        ...req.body,
-        password: hashedPassword,
-      });
-
-      const userWithoutPassword = await User.findByPk(user.id, {
-        attributes: { exclude: ["password"] },
-        include: [{ model: Role }],
-      });
-      return res.status(StatusCodes.CREATED).json(userWithoutPassword);
+      const user = await userService.create(req.body);
+      return res.status(StatusCodes.CREATED).json(user);
     } catch (error) {
       next(error);
     }
@@ -28,16 +13,7 @@ export const userController = {
 
   findAll: async (req, res, next) => {
     try {
-      const users = await User.findAll({
-        attributes: { exclude: ["password"] },
-        include: [
-          { model: Role },
-          {
-            model: Participation,
-            include: [{ model: Vote }],
-          },
-        ],
-      });
+      const users = await userService.findAll();
       return res.status(StatusCodes.OK).json(users);
     } catch (error) {
       next(error);
@@ -46,10 +22,7 @@ export const userController = {
 
   findOne: async (req, res, next) => {
     try {
-      const user = await User.findByPk(req.params.id, {
-        attributes: { exclude: ["password"] },
-        include: [{ model: Role }],
-      });
+      const user = await userService.findOne(req.params.id);
 
       if (!user) {
         return res.status(StatusCodes.NOT_FOUND).json({
@@ -65,27 +38,29 @@ export const userController = {
 
   update: async (req, res, next) => {
     try {
-      const user = await User.findByPk(req.params.id);
-
-      if (!user) {
+      const updated = await userService.update(req.params.id, req.body);
+      if (!updated) {
         return res.status(StatusCodes.NOT_FOUND).json({
           message: "Utilisateur introuvable",
         });
       }
+      return res.status(StatusCodes.OK).json(updated);
+    } catch (error) {
+      next(error);
+    }
+  },
 
-      const { role_id, password, profil_image, ...allowedUpdates } = req.body; // Empeche le changement de chaque argument dans la liste
+  delete: async (req, res, next) => {
+    try {
+      const deletedCount = await userService.delete(req.params.id);
 
-      if (password) {
-        allowedUpdates.password = await argon2.hash(password);
+      if (!deletedCount) {
+        return res.status(StatusCodes.NOT_FOUND).json({
+          message: "Impossible de supprimer : ressource introuvable",
+        });
       }
 
-      await user.update(allowedUpdates);
-
-      const userWithoutPassword = await User.findByPk(user.id, {
-        attributes: { exclude: ["password"] },
-        include: [{ model: Role }],
-      });
-      return res.status(StatusCodes.OK).json(userWithoutPassword);
+      return res.status(StatusCodes.NO_CONTENT).end();
     } catch (error) {
       next(error);
     }
@@ -93,40 +68,7 @@ export const userController = {
 
   getLeaderboard: async (req, res, next) => {
     try {
-      const users = await User.findAll({
-        attributes: { exclude: ["password", "email", "role_id", "birthdate"] },
-        include: [
-          {
-            model: Participation,
-            include: [{ model: Vote }],
-          },
-        ],
-      });
-
-      const rankedUsers = users
-        .map((user) => {
-          const u = user.toJSON();
-          // Calcul des Défis
-          u.nbDefis = u.Participations ? u.Participations.length : 0;
-          // Calcul des Votes
-          u.nbVotes = u.Participations
-            ? u.Participations.reduce(
-                (acc, p) => acc + (p.Votes ? p.Votes.length : 0),
-                0
-              )
-            : 0;
-
-          delete u.Participations;
-          return u;
-        })
-        .sort((a, b) => {
-          // Tri par Défis
-          if (b.nbDefis !== a.nbDefis) return b.nbDefis - a.nbDefis;
-          // Tri par Votes
-          return b.nbVotes - a.nbVotes;
-        })
-        .slice(0, 25); // Max 25 dans le classement
-
+      const rankedUsers = await userService.getLeaderboard({ limit: 25 });
       return res.status(StatusCodes.OK).json(rankedUsers);
     } catch (error) {
       next(error);
