@@ -1,10 +1,10 @@
 import express from "express";
 import { participationController } from "../controllers/participation.controller.js";
+import { isAuthenticated } from "../middlewares/auth.middleware.js";
 import {
-  isAuthenticated,
-  isOwnerOrAdmin,
-} from "../middlewares/auth.middleware.js";
-import { checkRole } from "../middlewares/checkRole.middleware.js";
+  requireOwnerOrAdmin,
+  requireRoles,
+} from "../middlewares/authorization.middleware.js";
 import { validate } from "../middlewares/validator.middleware.js";
 import { Participation } from "../models/participation.model.js";
 import {
@@ -28,14 +28,14 @@ router.get("/:id", participationController.findOne);
 router.patch(
   "/:id",
   isAuthenticated,
-  isOwnerOrAdmin(Participation),
+  requireOwnerOrAdmin(Participation),
   validate(participationUpdateSchema),
   participationController.update
 );
 router.delete(
   "/:id",
   isAuthenticated,
-  checkRole(["admin"]),
+  requireRoles(["admin"]),
   participationController.delete
 );
 

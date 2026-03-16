@@ -1,10 +1,10 @@
 import express from "express";
 import { challengeController } from "../controllers/challenge.controller.js";
+import { isAuthenticated } from "../middlewares/auth.middleware.js";
 import {
-  isAuthenticated,
-  isOwnerOrAdmin,
-} from "../middlewares/auth.middleware.js";
-import { checkRole } from "../middlewares/checkRole.middleware.js";
+  requireOwnerOrAdmin,
+  requireRoles,
+} from "../middlewares/authorization.middleware.js";
 import { validate } from "../middlewares/validator.middleware.js";
 import { Challenge } from "../models/challenge.model.js";
 import {
@@ -27,14 +27,14 @@ router.post(
 router.patch(
   "/:id",
   isAuthenticated,
-  isOwnerOrAdmin(Challenge),
+  requireOwnerOrAdmin(Challenge),
   validate(challengeUpdateSchema),
   challengeController.update
 );
 router.delete(
   "/:id",
   isAuthenticated,
-  checkRole(["admin"]),
+  requireRoles(["admin"]),
   challengeController.delete
 );
 

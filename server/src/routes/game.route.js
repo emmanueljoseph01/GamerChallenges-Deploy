@@ -1,7 +1,7 @@
 import express from "express";
 import { gameController } from "../controllers/game.controller.js";
 import { isAuthenticated } from "../middlewares/auth.middleware.js";
-import { checkRole } from "../middlewares/checkRole.middleware.js";
+import { requireRoles } from "../middlewares/authorization.middleware.js";
 import { validate } from "../middlewares/validator.middleware.js";
 import {
   gameSchema,
@@ -22,7 +22,7 @@ router.patch(
 router.delete(
   "/:id",
   isAuthenticated,
-  checkRole(["admin"]),
+  requireRoles(["admin"]),
   gameController.delete
 );
 
