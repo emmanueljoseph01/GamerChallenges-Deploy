@@ -11,11 +11,18 @@ import {
 const router = express.Router();
 
 router.get("/", gameController.findAll);
-router.post("/", isAuthenticated, validate(gameSchema), gameController.create);
+router.post(
+  "/",
+  isAuthenticated,
+  requireRoles(["admin"]),
+  validate(gameSchema),
+  gameController.create
+);
 router.get("/:id", gameController.findOne);
 router.patch(
   "/:id",
   isAuthenticated,
+  requireRoles(["admin"]),
   validate(gameUpdateSchema),
   gameController.update
 );

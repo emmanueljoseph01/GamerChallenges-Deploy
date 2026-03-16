@@ -17,6 +17,7 @@ const router = express.Router();
 router.get("/user/:userId", challengeController.findByUser); // GET /api/challenges/user/?
 
 router.get("/", challengeController.findAll);
+router.get("/:id/details", challengeController.findOneWithDetails); // GET /api/challenges/3/details = challenge n°(challenge_id) + créateur + jeu + participations
 router.get("/:id", challengeController.findOne);
 router.post(
   "/",
@@ -38,6 +39,5 @@ router.delete(
   challengeController.delete
 );
 
-router.get("/:id/details", challengeController.findOneWithDetails); // GET /api/challenges/3/details = challenge n°(challenge_id) + créateur + jeu + participations
 
 export default router;

@@ -68,8 +68,8 @@ GamerChallenges est une application web fullstack (API RESTful + Client) permett
 | GET | `/` | Public | Liste tous les jeux |
 | GET | `/:id` | Public | Détail d'un jeu |
 | GET | `/:id/challenges` | Public | Challenges d'un jeu |
-| POST | `/` | Membre | Créer un jeu |
-| PATCH | `/:id` | Membre | Modifier un jeu |
+| POST | `/` | Admin | Créer un jeu |
+| PATCH | `/:id` | Admin | Modifier un jeu |
 | DELETE | `/:id` | Admin | Supprimer un jeu |
 
 ### Challenges — `/api/challenges`
