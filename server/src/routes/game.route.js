@@ -1,7 +1,7 @@
 import express from "express";
 import { gameController } from "../controllers/game.controller.js";
 import { isAuthenticated } from "../middlewares/auth.middleware.js";
-import { checkRole } from "../middlewares/checkRole.middleware.js";
+import { requireRoles } from "../middlewares/authorization.middleware.js";
 import { validate } from "../middlewares/validator.middleware.js";
 import {
   gameSchema,
@@ -11,18 +11,25 @@ import {
 const router = express.Router();
 
 router.get("/", gameController.findAll);
-router.post("/", isAuthenticated, validate(gameSchema), gameController.create);
+router.post(
+  "/",
+  isAuthenticated,
+  requireRoles(["admin"]),
+  validate(gameSchema),
+  gameController.create
+);
 router.get("/:id", gameController.findOne);
 router.patch(
   "/:id",
   isAuthenticated,
+  requireRoles(["admin"]),
   validate(gameUpdateSchema),
   gameController.update
 );
 router.delete(
   "/:id",
   isAuthenticated,
-  checkRole(["admin"]),
+  requireRoles(["admin"]),
   gameController.delete
 );
 

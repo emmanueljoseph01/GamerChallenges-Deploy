@@ -1,7 +1,7 @@
 import express from "express";
 import { voteController } from "../controllers/vote.controller.js";
 import { isAuthenticated } from "../middlewares/auth.middleware.js";
-import { checkRole } from "../middlewares/checkRole.middleware.js";
+import { requireRoles } from "../middlewares/authorization.middleware.js";
 import { validate } from "../middlewares/validator.middleware.js";
 import { voteSchema } from "../validations/vote.validation.js";
 
@@ -24,7 +24,7 @@ router.get("/:id", voteController.findOne);
 router.delete(
   "/:id",
   isAuthenticated,
-  checkRole(["admin"]),
+  requireRoles(["admin"]),
   voteController.delete
 );
 

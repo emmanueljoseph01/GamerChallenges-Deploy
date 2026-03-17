@@ -36,8 +36,8 @@ GamerChallenges est une application web fullstack (API RESTful + Client) permett
 
 **Contrôle des accès :**
 * `isAuthenticated` — vérifie le JWT sur les routes protégées
-* `checkRole(["admin"])` — vérifie le rôle par son nom en base
-* `isOwnerOrAdmin` — vérifie que l'utilisateur est propriétaire de la ressource ou admin avant toute modification
+* `requireRoles(["admin"])` — vérifie le rôle par son nom en base
+* `requireOwnerOrAdmin(Model)` — vérifie que l'utilisateur est propriétaire de la ressource ou admin avant toute modification
 
 **Robustesse et standardisation :**
 * Codes HTTP standardisés via la librairie `http-status-codes`
@@ -68,8 +68,8 @@ GamerChallenges est une application web fullstack (API RESTful + Client) permett
 | GET | `/` | Public | Liste tous les jeux |
 | GET | `/:id` | Public | Détail d'un jeu |
 | GET | `/:id/challenges` | Public | Challenges d'un jeu |
-| POST | `/` | Membre | Créer un jeu |
-| PATCH | `/:id` | Membre | Modifier un jeu |
+| POST | `/` | Admin | Créer un jeu |
+| PATCH | `/:id` | Admin | Modifier un jeu |
 | DELETE | `/:id` | Admin | Supprimer un jeu |
 
 ### Challenges — `/api/challenges`
