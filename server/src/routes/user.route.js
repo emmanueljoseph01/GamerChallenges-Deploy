@@ -18,7 +18,13 @@ router.get("/leaderboard", userController.getLeaderboard);
 
 router.get("/", userController.findAll);
 router.get("/:id", userController.findOne);
-router.post("/", isAuthenticated, validate(userSchema), userController.create);
+router.post(
+  "/",
+  isAuthenticated,
+  requireRoles(["admin"]),
+  validate(userSchema),
+  userController.create
+);
 router.patch(
   "/:id",
   isAuthenticated,
