@@ -1,6 +1,6 @@
 import argon2 from "argon2";
-import { Participation, Role, User, Vote } from "../models/index.model.js";
-import { col, fn } from "sequelize";
+import { QueryTypes } from "sequelize";
+import { Participation, Role, sequelizeClient, User, Vote } from "../models/index.model.js";
 
 export class UserService {
   async create(payload) {
@@ -59,34 +59,32 @@ export class UserService {
     return await User.destroy({ where: { id } });
   }
 
-  async getLeaderboard({ limit = 25 } = {}) {
-    const safeLimit = Math.max(1, Math.min(100, Number(limit) || 25));
+  async getLeaderboard() {
+    const rows = await sequelizeClient.query(
+      `
+      SELECT
+        utilisateur.id,
+        utilisateur.username,
+        utilisateur.profil_image,
+        COUNT(DISTINCT participation.id) AS nb_defis,
+        COUNT(DISTINCT vote.id) AS nb_votes
+      FROM users AS utilisateur
+      LEFT JOIN participations AS participation ON participation.user_id = utilisateur.id
+      LEFT JOIN votes AS vote ON vote.participation_id = participation.id
+      GROUP BY utilisateur.id, utilisateur.username, utilisateur.profil_image
+      ORDER BY COUNT(DISTINCT participation.id) DESC, COUNT(DISTINCT vote.id) DESC
+      LIMIT 25
+      `,
+      { type: QueryTypes.SELECT }
+    );
 
-    return await User.findAll({
-      attributes: [
-        "id",
-        "username",
-        "profil_image",
-        [fn("COUNT", fn("DISTINCT", col("Participations.id"))), "nbDefis"],
-        [fn("COUNT", fn("DISTINCT", col("Participations->Votes.id"))), "nbVotes"],
-      ],
-      include: [
-        {
-          model: Participation,
-          attributes: [],
-          required: false,
-          include: [{ model: Vote, attributes: [], required: false }],
-        },
-      ],
-      group: ["User.id", "User.username", "User.profil_image"],
-      order: [
-        [fn("COUNT", fn("DISTINCT", col("Participations.id"))), "DESC"],
-        [fn("COUNT", fn("DISTINCT", col("Participations->Votes.id"))), "DESC"],
-      ],
-      limit: safeLimit,
-      subQuery: false,
-      raw: true,
-    });
+    return rows.map((row) => ({
+      id: row.id,
+      username: row.username,
+      profil_image: row.profil_image,
+      nbDefis: Number(row.nb_defis),
+      nbVotes: Number(row.nb_votes),
+    }));
   }
 }
 

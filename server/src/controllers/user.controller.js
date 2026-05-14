@@ -68,7 +68,7 @@ export const userController = {
 
   getLeaderboard: async (req, res, next) => {
     try {
-      const rankedUsers = await userService.getLeaderboard({ limit: 25 });
+      const rankedUsers = await userService.getLeaderboard();
       return res.status(StatusCodes.OK).json(rankedUsers);
     } catch (error) {
       next(error);
